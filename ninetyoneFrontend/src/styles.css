@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* ink-bar style */
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background: rgb(93, 99, 75);
+    height: 3px;
+    
+  }
+/* label style */
+.mat-tab-label{
+    background:  rgb(184, 230, 139);
+    color:   rgb(93, 99, 75);
+    flex: auto;
+  }

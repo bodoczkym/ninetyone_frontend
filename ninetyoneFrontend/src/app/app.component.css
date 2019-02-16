@@ -1,0 +1,35 @@
+.container{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.container .mat-drawer{
+    min-width:150px;
+}
+
+.container .header{
+    color: rgb(93, 99, 75);
+    justify-content: center;
+    background: rgba(184, 230, 139, 0.795);
+}
+
+.container .mat-drawer .mat-button{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.container .sidenav{
+    color: rgb(164, 216, 113);
+}
+
+.container .sidenav-content .menu-panel{
+    background: rgb(184, 230, 139);
+}
+
+.spacer {
+    flex: auto; /*same as 1 1 auto*/
+}
