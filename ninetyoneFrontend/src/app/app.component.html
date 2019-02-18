@@ -1,6 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-drawer-container class="container" autosize>
-  <mat-toolbar class="header"> Welcome to {{ title }}! </mat-toolbar>
+ <!--<mat-toolbar class="header"> Welcome to {{ title }}! </mat-toolbar>-->
+ <div class="hero-image">
+    <div class="hero-text">
+      <h1>Welcome to {{title}}!</h1>
+      <p class="sub-text">
+        <mat-icon>phone</mat-icon>06/30-24-34-542
+      </p>
+      <p class="sub-text">
+        <mat-icon>mail</mat-icon>szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+      </p>
+    </div>
+  </div> 
   <mat-drawer #drawer class="sidenav" position="end">
     <button mat-button routerLink="/login"> Login </button>
     <button mat-button routerLink="/profile" disabled> Profile </button>

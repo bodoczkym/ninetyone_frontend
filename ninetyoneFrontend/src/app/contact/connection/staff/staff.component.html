@@ -1,0 +1,81 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link class="spacer" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
+    #rla="routerLinkActive" [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!--TODO: spacer:auto
+          the smallest pictures should be the right pictures
+          import from sql
+          like and message buttons should get link
+-->
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Big Chungus</mat-card-title>
+    <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/images/img1.png" class="image" alt="BC">
+  <mat-card-content class="content" *ngIf="collapsed1">
+    <p>He is sooo funny.</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!collapsed1">
+    <button mat-button (click)="collapsed1=true">Több</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>
+      <mat-icon>email</mat-icon>
+      MESSAGE
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Mustache Man</mat-card-title>
+    <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/images/img2.jpg" class="image" alt="BC">
+  <mat-card-content class="content" *ngIf="collapsed2">
+    <p>He is sooo funny.</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!collapsed2">
+    <button mat-button (click)="collapsed2=true">Több</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>
+      <mat-icon>email</mat-icon>
+      MESSAGE
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Weird Woman</mat-card-title>
+    <mat-card-subtitle>https://twitter.com/hashtag/weirdo</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/images/img3.jpg" class="image" alt="BC">
+  <mat-card-content class="content" *ngIf="collapsed3">
+    <p>He is sooo funnyjnfkjnfkjas gnjkasbgkadbgdkafhbghd fabghl fabgdjfbjad fljgkrskaljgbrjks ahlkjabgkl fdjagblkfdjabgl kdfajbgldkfagbl fdablhdafbgkhbaed lghbrwlgbl krejabgraebgb.</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!collapsed3">
+    <button mat-button (click)="collapsed3=true">Több</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>
+      <mat-icon>email</mat-icon>
+      MESSAGE
+    </button>
+  </mat-card-actions>
+</mat-card>
+

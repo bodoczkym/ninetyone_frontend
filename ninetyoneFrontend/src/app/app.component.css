@@ -33,3 +33,40 @@
 .spacer {
     flex: auto; /*same as 1 1 auto*/
 }
+
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("/assets/images/flowers.jpg");/*linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/flowers.jpg");*/
+
+    /* Set a specific height */
+    height: 40%;
+    width: 100%;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  /* Place text in the middle of the image */
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    transform: translate(-20%, -10%);
+    color: rgb(112, 235, 101);
+  }
+
+  .hero-text .sub-text{
+    color: rgb(100, 230, 117);
+    background-color: rgba(97, 141, 87, 0.3);
+    display: run-in
+  }
+
+  ::-webkit-scrollbar{
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
