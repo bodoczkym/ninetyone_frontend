@@ -9,27 +9,27 @@
     <mat-toolbar class="menu-panel">
       <mat-toolbar-row>
 
-        <button mat-icon-button routerLink="/home">
+        <button mat-button routerLink="/home">
           <mat-icon>house</mat-icon>
-          <span>Home</span>
+          Home
         </button>
 
 
         <span class="spacer"></span>
 
 
-        <button mat-icon-button routerLink="/products">
+        <button mat-button routerLink="/products">
           <mat-icon>store</mat-icon>
-          <span>Products</span>
+          Products
         </button>
 
 
         <span class="spacer"></span>
 
 
-        <button mat-icon-button routerLink="/forum">
+        <button mat-button routerLink="/forum">
           <mat-icon>question_answer</mat-icon>
-          <span>Forum</span>
+          Forum
         </button>
 
 
@@ -37,30 +37,17 @@
         <span class="spacer"></span>
 
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+        <button mat-button routerLink="/connect">
             <mat-icon>alternate_email</mat-icon>
-            <span>Connect</span>
+            Connect
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/availability">
-              <mat-icon>contact_support</mat-icon>
-              <span>Availability info</span>
-            </button>
-            <button mat-menu-item routerLink="/job">
-                <mat-icon>accessibility_new</mat-icon>
-                <span>Apply for job</span>
-              </button>
-            <button mat-menu-item routerLink="/note">
-              <mat-icon>chat_bubble</mat-icon>
-              <span>Send note about the website</span>
-            </button>
-          </mat-menu>
+         
 
 
         <span class="spacer"></span>
 
 
-        <button mat-icon-button (click)="drawer.toggle()">
+        <button mat-button (click)="drawer.toggle()">
           <mat-icon>settings</mat-icon>
         </button>
 

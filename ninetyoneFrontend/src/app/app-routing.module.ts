@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: './forum/forum.module#ForumModule'
     },
     {
+        path: 'connect',
+        loadChildren: './contact/contact.module#ContactModule'
+    },
+    {
         path: '',
         redirectTo: '',
         pathMatch: 'full'
