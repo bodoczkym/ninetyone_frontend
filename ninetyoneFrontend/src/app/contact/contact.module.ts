@@ -24,6 +24,7 @@ import { RateComponent } from './connection/staff/rate/rate.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BarRatingModule } from '../../../../../../ninetyone/ninetyone_frontend/ninetyoneFrontend/node_modules/ng2-bar-rating';
+import { StarRatingModule } from '../../../node_modules/angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { BarRatingModule } from '../../../../../../ninetyone/ninetyone_frontend/
     MatFormFieldModule,
     /*Http*/
     HttpClientModule,
-    BarRatingModule
+    BarRatingModule,
+    StarRatingModule.forRoot()
   ],
   entryComponents: [
     MessageToStaffDialogComponent,

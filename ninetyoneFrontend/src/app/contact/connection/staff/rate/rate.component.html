@@ -1,2 +1,8 @@
-<bar-rating [(rate)]="rate" [max]="5" [showText]="true" [theme]="'stars'"
-  [titles]="['Bad', 'Mediocre' , 'Good', 'Awesome']"></bar-rating>
+<!--<bar-rating [(rate)]="rate" [theme]="'stars'" (click)="onClick()"></bar-rating>
+<link rel="stylesheet" href="../../../../../assets/star-rating-2.css">-->
+
+
+<star-rating class="dialog" [starType]="'svg'" labelPosition="top" [labelText]="myLabelText"
+speed="slow" (starClickChange)="onClick($event, rating)" [getColor]="getColor"
+[showHalfStars]="true" [rating]="4" [hoverEnabled]="true">
+</star-rating>

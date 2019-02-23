@@ -1,0 +1,7 @@
+.dialog{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: rgb(93, 99, 75);
+}
+
