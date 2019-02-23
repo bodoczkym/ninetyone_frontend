@@ -1,3 +1,12 @@
+.spacer {
+    flex: auto; /*same as 1 1 auto*/
+}
+
+.mat-tab-nav-bar{
+    color: rgb(93, 99, 75);
+    background-color: rgb(164, 216, 113);
+}
+
 .mat-card{
     max-width: 200px;
     max-height: 400px;
@@ -36,6 +45,3 @@
     flex:auto;
 }
 
-.spacer {
-    flex: auto; /*same as 1 1 auto*/
-}

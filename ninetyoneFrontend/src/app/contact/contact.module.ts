@@ -4,17 +4,26 @@ import { CommonModule } from '@angular/common';
 import { ContactRoutingModule } from './contact-routing.module';
 import { ConnectionComponent } from './connection/connection.component';
 
-import { StaffComponent } from './connection/staff/staff.component';
-import { JobsComponent } from './connection/jobs/jobs.component';
-import { InfoComponent } from './connection/info/info.component';
-import { NoteComponent } from './connection/note/note.component';
-
 // Material components
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatExpansionModule} from '@angular/material/expansion';
 
+import { StaffComponent } from './connection/staff/staff.component';
+import { JobsComponent } from './connection/jobs/jobs.component';
+import { InfoComponent } from './connection/info/info.component';
+import { NoteComponent } from './connection/note/note.component';
+import { MessageToStaffDialogComponent } from './connection/staff/message-to-staff-dialog/message-to-staff-dialog.component';
+import { RateComponent } from './connection/staff/rate/rate.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BarRatingModule } from '../../../../../../ninetyone/ninetyone_frontend/ninetyoneFrontend/node_modules/ng2-bar-rating';
 
 @NgModule({
   declarations: [
@@ -22,7 +31,9 @@ import { MatIconModule } from '@angular/material/icon';
     StaffComponent,
     JobsComponent,
     InfoComponent,
-    NoteComponent
+    NoteComponent,
+    MessageToStaffDialogComponent,
+    RateComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +42,18 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatFormFieldModule,
+    /*Http*/
+    HttpClientModule,
+    BarRatingModule
+  ],
+  entryComponents: [
+    MessageToStaffDialogComponent,
+    RateComponent
   ]
 })
 export class ContactModule { }

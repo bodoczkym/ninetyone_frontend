@@ -1,0 +1,22 @@
+.dialog{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: rgb(93, 99, 75);
+}
+
+.dialog .input-field {
+    text-align: left;
+    width: 95%;
+    color: rgb(93, 99, 75);
+}
+
+.cancel {
+    color: rgb(93, 99, 75);
+    background-color: rgb(236, 243, 229);
+}
+
+.send {
+    color: rgb(93, 99, 75);
+    background-color: rgb(164, 216, 113);
+}

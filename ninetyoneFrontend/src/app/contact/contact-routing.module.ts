@@ -16,7 +16,7 @@ const routes: Routes = [
     component: StaffComponent
   },
   {
-    path: 'availability',
+    path: 'info',
     component: InfoComponent
   },
   {

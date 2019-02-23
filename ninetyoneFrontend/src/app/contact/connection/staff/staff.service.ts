@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
     providedIn: 'root'
 })
 export class StaffService {
-  /*  private userUrl = 'http://localhost:8080/users';
+    private userUrl = 'http://localhost:8080/users';
     private users  = [];
 
     constructor(private http: HttpClient) { }
 
-    get_products() {
+  /*  get_products() {
         return this.http.get(this.userUrl);
     }
 

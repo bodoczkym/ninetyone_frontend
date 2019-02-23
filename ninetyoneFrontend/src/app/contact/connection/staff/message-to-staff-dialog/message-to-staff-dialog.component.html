@@ -1,0 +1,62 @@
+<!--
+  <div class="dialog">
+  <h2 mat-dialog-title>Send email to XY</h2>
+
+  <mat-dialog-content class="mat-dialog-content">
+    <mat-form-field class="mat-form-field">
+      <input matInput placeholder="youremailaddress@example.com"/>
+      <input matInput placeholder="Subject"/>
+      <textarea class="text_area" placeholder="Write your message here" rows="10" cols="20"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="buttons">
+    <button mat-button (click)=cancel()>Cancel</button>
+    <button mat-raised-button (click)=send()> Send </button>
+  </mat-dialog-actions>
+
+</div>-->
+<div class="dialog">
+  <h1 mat-dialog-title> Send email to XY </h1>
+  <div mat-dialog-content>
+    <mat-form-field class="input-field">
+      <input matInput type="email" placeholder="john.doe@example.com"/>
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <input matInput placeholder="Subject" />
+    </mat-form-field>
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Write your message here</mat-label>
+      <textarea matInput #message maxlength="1000" rows="7"></textarea>
+      <mat-hint>{{message.value.length}} / 1000</mat-hint>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button class="cancel" (click)=cancel()>Cancel</button>
+    <button mat-raised-button class="send" (click)=send()> Send </button>
+  </div>
+</div>
+<!--
+<mat-form-field class="mat-form-field">
+  <input id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob" />
+  <mat-error *ngIf="name.invalid && (name.dirty || name.touched) || name.errors.minlength">
+    Name must be at least 4 characters long.
+  </mat-error>
+  <mat-error *ngIf="name.errors.required">
+    Name is <strong> required </strong> .
+  </mat-error>
+  <mat-error *ngIf="name.errors.forbiddenName">
+      Name cannot be Bob.
+  </mat-error>
+</mat-form-field>
+
+  <mat-form-field class="mat-form-field">
+  <input id="email"/>
+  <mat-error *ngIf="emailFormControl.hasError('email')">
+    Please enter a valid email address!
+  </mat-error>
+  <mat-error *ngIf="emailFormControl.hasError('required')">
+    Email is <strong> required </strong> .
+  </mat-error>
+</mat-form-field>
+-->

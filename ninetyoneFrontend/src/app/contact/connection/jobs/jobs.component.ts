@@ -12,7 +12,7 @@ export class JobsComponent implements OnInit {
   navLinks = [
     {
         label: 'Contact info',
-        link: '../availability',
+        link: '../info',
         index: 0
     },
     {
@@ -31,7 +31,7 @@ export class JobsComponent implements OnInit {
         index: 3
     }
  ];
- 
+
   ngOnInit() {
   }
 

@@ -1,10 +1,9 @@
-<nav mat-tab-nav-bar>
+<nav mat-tab-nav-bar headerPosition="below">
   <a mat-tab-link class="spacer" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
     #rla="routerLinkActive" [active]="rla.isActive">
     {{link.label}}
   </a>
 </nav>
-
 <router-outlet></router-outlet>
 
 <!--TODO: spacer:auto
@@ -26,8 +25,8 @@
     <button mat-button (click)="collapsed1=true">Több</button>
   </mat-card-actions>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>
+    <button mat-button (click)=rate()>RATE</button>
+    <button mat-button (click)=message()>
       <mat-icon>email</mat-icon>
       MESSAGE
     </button>
@@ -48,14 +47,13 @@
     <button mat-button (click)="collapsed2=true">Több</button>
   </mat-card-actions>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>
+    <button mat-button (click)=rate()>RATE</button>
+    <button mat-button (click)=message()>
       <mat-icon>email</mat-icon>
       MESSAGE
     </button>
   </mat-card-actions>
 </mat-card>
-
 
 <mat-card>
   <mat-card-header>
@@ -64,23 +62,24 @@
     <mat-card-subtitle>https://twitter.com/hashtag/weirdo</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="/assets/images/img3.jpg" class="image" alt="BC">
-  <mat-card-content class="content" *ngIf="collapsed3">
-    <p>He is sooo funnyjnfkjnfkjas gnjkasbgkadbgdkafhbghd fabghl fabgdjfbjad fljgkrskaljgbrjks ahlkjabgkl
-      fdjagblkfdjabgl kdfajbgldkfagbl fdablhdafbgkhbaed lghbrwlgbl krejabgraebgb.</p>
+  <mat-card-content class="content"  >
+    <p>He is sooo funnyjnfkj nfkjas gnjkasb gkadbgdkafhbghd fabghl fabgdjfbjad fljgkrskaljgbrjks ahlkjabgkl
+      fdjagblkfdjabgl kdfajbgldkfagbl fdabl hdafbgkhbaed lghbrwlgbl krejabgraebgb.</p>
   </mat-card-content>
-  <mat-card-actions *ngIf="!collapsed3">
-    <button mat-button (click)="collapsed3=true">Több</button>
-  </mat-card-actions>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>
+    <button mat-button (click)=rate()>RATE</button>
+    <button mat-button (click)=message()>
       <mat-icon>email</mat-icon>
       MESSAGE
     </button>
   </mat-card-actions>
 </mat-card>
 
-<p>TODO:  dynamical data loading
-          .spacer: centralize the cards
-          like and message button should get pop up
+
+<p>TODO: dynamical data loading
+  (.spacer: centralize the cards)
+  like and message button should get pop up
 </p>
+
+
+

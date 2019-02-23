@@ -12,7 +12,7 @@ export class NoteComponent implements OnInit {
   navLinks = [
     {
         label: 'Contact info',
-        link: '../availability',
+        link: '../info',
         index: 0
     },
     {
