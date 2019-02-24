@@ -24,10 +24,6 @@ const routes: Routes = [
         loadChildren: './profile/profile.module#ProfileModule'
     },
     {
-        path: 'home',
-        component: AppComponent
-    },
-    {
         path: 'forum',
         loadChildren: './forum/forum.module#ForumModule'
     },

@@ -1,15 +1,10 @@
-<nav mat-tab-nav-bar>
-    <a mat-tab-link
-      class="spacer"
-       *ngFor="let link of navLinks"
-       [routerLink]="link.link"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      {{link.label}}
-    </a>
-  </nav>
-  
-  <router-outlet></router-outlet>
+<!--<nav mat-tab-nav-bar headerPosition="below">
+  <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
+    #rla="routerLinkActive" [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+<router-outlet></router-outlet>-->
 
   <p>TODO: text about the contact (via phone, e-mail, address),
            google map,

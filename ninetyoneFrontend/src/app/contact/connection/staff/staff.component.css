@@ -1,14 +1,13 @@
-.spacer {
-    flex: auto; /*same as 1 1 auto*/
+.mat-tab-link {
+    flex: auto;    
+    color: rgb(255, 255, 255);
 }
 
 .mat-tab-nav-bar{
-    color: rgb(255, 255, 255);
-    background-color: rgb(255, 60, 0, 0.95);/*rgb(136, 201, 72, 0.7);/*rgb(77, 150, 72, 0.8);*/
+    background-color: rgb(255, 98, 50, 0.9);
 }
 
 .container {
-    background-color: rgba(85, 78, 78, 0.658);
     width:  85%;
     object-position: center
 }
@@ -48,7 +47,7 @@
 
 .mat-card-actions {
     /*display:flex;*/
-    color: rgb(57, 75, 16);
+    color: rgb(93, 99, 75);
     flex:auto;
 }
 

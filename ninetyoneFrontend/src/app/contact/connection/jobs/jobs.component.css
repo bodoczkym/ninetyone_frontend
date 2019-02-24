@@ -1,8 +1,8 @@
-.spacer {
-    flex: auto; /*same as 1 1 auto*/
+.mat-tab-link {
+    flex: auto;    
+    color: rgb(255, 255, 255); 
 }
 
 .mat-tab-nav-bar{
-    color: rgb(93, 99, 75);
-    background-color: rgb(164, 216, 113);
+    background-color: rgb(255, 98, 50, 0.9);
 }

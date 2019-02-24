@@ -1,14 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!--TODO: when the page is undersized the buttons in the menu don't wrap-->
 <mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" position="end">
+    <button mat-button routerLink="/login" (click)="drawer.toggle()"> Login </button>
+    <button mat-button routerLink="/profile" disabled> Profile </button>
+  </mat-drawer>
   <div class="hero-image">
-    <mat-drawer #drawer class="sidenav" position="end">
-      <button mat-button routerLink="/login"> Login </button>
-      <button mat-button routerLink="/profile" disabled> Profile </button>
-    </mat-drawer>
     <div class="sidenav-content">
       <mat-toolbar class="menu-panel">
         <mat-toolbar-row>
-          <button mat-button routerLink="/home">
+          <button mat-button routerLink="">
             <mat-icon>house</mat-icon>
           </button>
           <span class="spacer"></span>
@@ -31,15 +31,38 @@
             <mat-icon>settings</mat-icon>
           </button>
         </mat-toolbar-row>
+        <!--<mat-toolbar-row #secondMenu *ngIf="router.url==='/connect' || router.url==='/products'">
+          
+        </mat-toolbar-row>-->
       </mat-toolbar>
-      <div class="text">
-          <h1>Welcome to {{title}}!</h1>
-          <p class="sub-text">
-            <mat-icon>phone</mat-icon>06/30-24-34-542
-          </p>
-          <p class="sub-text">
-            szandi<mat-icon>alternate_email</mat-icon>asdsd.com
-          </p>
+
+      <nav mat-tab-nav-bar class="mat-tab-nav-bar" mat-align-tabs="center" *ngIf="router.url==='/connect'
+      || router.url==='/connect/staff' || router.url==='/connect/jobs' || router.url==='/connect/note' || 
+      router.url==='/connect/info'">
+        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksConnect" [routerLink]="link.link" routerLinkActive
+          #rla="routerLinkActive" [active]="rla.isActive">
+          {{link.label}}
+        </a>
+      </nav>
+
+      <nav mat-tab-nav-bar class="mat-tab-nav-bar" mat-align-tabs="center" *ngIf="router.url==='/products'
+      || router.url==='/products/kitchen' || router.url==='/products/livingroom' ||
+       router.url==='/products/bedroom' || 
+      router.url==='/products/bathroom' || router.url==='/products/techs'">
+        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksProducts" [routerLink]="link.link" routerLinkActive
+          #rla="routerLinkActive" [active]="rla.isActive">
+          {{link.label}}
+        </a>
+      </nav>
+
+      <div class="text" *ngIf="router.url==='/'">
+        <h1>Welcome to {{title}}!</h1>
+        <p class="sub-text">
+          <mat-icon>phone</mat-icon>06/30-24-34-542
+        </p>
+        <p class="sub-text">
+          szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+        </p>
       </div>
       <router-outlet></router-outlet>
     </div>
@@ -48,7 +71,6 @@
   </div>
 
 </mat-drawer-container>
-
 
 <!--
 <mat-drawer-container class="container" autosize>
