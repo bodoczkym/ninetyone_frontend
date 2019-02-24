@@ -1,3 +1,4 @@
+
 .container{
     position: absolute;
     top:0;
@@ -6,52 +7,100 @@
     bottom:0;
 }
 
-.container .mat-drawer{
-    min-width:150px;
-}
-
-.container .header{
-    color: rgb(93, 99, 75);
-    justify-content: center;
-    background: rgba(184, 230, 139, 0.795);
-}
-
-.container .mat-drawer .mat-button{
-    display: block;
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.03)), url("/assets/images/flowers.jpg");/*linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/flowers.jpg");*/
+     /* Set a specific height */
+    height: 100%;
     width: 100%;
-    text-align: left;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
 }
 
-.container .sidenav{
-    color: rgb(164, 216, 113);
+.container .hero-image .sidenav-content {
+    background-color: rgba(110, 99, 99, 0.5);
+    position: relative;
+    min-height: 100%;
+    width: 92%;
+    left: 4%;
+    right: 4%;
+    
 }
 
-.container .sidenav-content .menu-panel{
-    background: rgb(151, 214, 87);
+.container .hero-image .sidenav-content .menu-panel{
+    width: 100%;
+    height: 10%;
+    background: /*rgb(136, 201, 72);*/rgb(255, 98, 50);
+    color: /*rgb(36, 48, 9);*//*rgb(29, 109, 39);*/rgb(255,255,255);
 }
 
 .spacer {
     flex: auto; /*same as 1 1 auto*/
 }
 
-/* The hero image */
-.hero-image {
-    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("/assets/images/flowers.jpg");/*linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/flowers.jpg");*/
+.container .hero-image .sidenav-content .text {
+    display: inherit;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}  
 
-    /* Set a specific height */
-    height: 40%;
+.container .hero-image .text .sub-text {
+    display: inherit;
+}
+
+.container .hero-image .mat-drawer{
+    min-width: 10%;
+}
+
+.container .hero-image .mat-drawer .mat-button{
     width: 100%;
+    display: block;
+    text-align: left;
+}
+
+.container .hero-image .sidenav{
+    color: rgb(255, 98, 50);
+}
+
+
+/*
+
+.container .hero-image .mat-drawer{
+    min-width:150px;
+}
+
+.container .header{
+    color: rgb(93, 99, 75);
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),rgba(184, 230, 139, 0.3);
+}
+
+.container .hero-image .mat-drawer .mat-button{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.container .hero-image .sidenav{
+    color: rgb(160, 216, 104);
+}
+
+
+
+.spacer {
+    flex: auto; /*same as 1 1 auto
+}
+
+
+
   
-    /* Position and center the image to scale nicely on all screens */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  
-  /* Place text in the middle of the image */
-  .hero-text {
+  /* TODO: dispaly this text just in the home page. Place text the image 
+ .hero-text {
     text-align: center;
     position: absolute;
     top: 20%;
@@ -59,14 +108,16 @@
     transform: translate(-20%, -10%);
     color: rgb(112, 235, 101);
   }
-
-  .hero-text .sub-text{
+ 
+.hero-text .sub-text {
     color: rgb(100, 230, 117);
     background-color: rgba(97, 141, 87, 0.3);
     display: run-in
   }
+  
 
   ::-webkit-scrollbar{
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px;  /* remove scrollbar space 
+    background: transparent;  /* optional: just make scrollbar invisible 
   }
+*/

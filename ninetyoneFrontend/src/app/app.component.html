@@ -1,74 +1,111 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-drawer-container class="container" autosize>
-  <!--<mat-toolbar class="header"> Welcome to {{ title }}! </mat-toolbar>-->
   <div class="hero-image">
-    <div class="hero-text">
-      <h1>Welcome to {{title}}!</h1>
-      <p class="sub-text">
-        <mat-icon>phone</mat-icon>06/30-24-34-542
-      </p>
-      <p class="sub-text">
-        <mat-icon>mail</mat-icon>szandi<mat-icon>alternate_email</mat-icon>asdsd.com
-      </p>
+    <mat-drawer #drawer class="sidenav" position="end">
+      <button mat-button routerLink="/login"> Login </button>
+      <button mat-button routerLink="/profile" disabled> Profile </button>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <mat-toolbar class="menu-panel">
+        <mat-toolbar-row>
+          <button mat-button routerLink="/home">
+            <mat-icon>house</mat-icon>
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/products">
+            <mat-icon>store</mat-icon>
+            Products
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/forum">
+            <mat-icon>question_answer</mat-icon>
+            Forum
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/connect">
+            <mat-icon>alternate_email</mat-icon>
+            Connect
+          </button>
+          <span class="spacer"></span>
+          <button mat-button (click)="drawer.toggle()">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="text">
+          <h1>Welcome to {{title}}!</h1>
+          <p class="sub-text">
+            <mat-icon>phone</mat-icon>06/30-24-34-542
+          </p>
+          <p class="sub-text">
+            szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+          </p>
+      </div>
+      <router-outlet></router-outlet>
     </div>
+
+
   </div>
-  <mat-drawer #drawer class="sidenav" position="end">
-    <button mat-button routerLink="/login"> Login </button>
-    <button mat-button routerLink="/profile" disabled> Profile </button>
-  </mat-drawer>
-  <div class="sidenav-content">
-    <mat-toolbar class="menu-panel">
-      <mat-toolbar-row>
 
-        <button mat-button routerLink="/home">
-          <mat-icon>house</mat-icon>
-        </button>
-
-
-        <span class="spacer"></span>
-
-
-        <button mat-button routerLink="/products">
-          <mat-icon>store</mat-icon>
-          Products
-        </button>
-
-
-        <span class="spacer"></span>
-
-
-        <button mat-button routerLink="/forum">
-          <mat-icon>question_answer</mat-icon>
-          Forum
-        </button>
-
-
-
-        <span class="spacer"></span>
-
-
-        <button mat-button routerLink="/connect">
-          <mat-icon>alternate_email</mat-icon>
-          Connect
-        </button>
-
-
-
-        <span class="spacer"></span>
-
-
-        <button mat-button (click)="drawer.toggle()">
-          <mat-icon>settings</mat-icon>
-        </button>
-
-
-
-
-
-
-
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </div>
 </mat-drawer-container>
+
+
+<!--
+<mat-drawer-container class="container" autosize>
+  <div class="hero-image">
+
+    <div class="upper-background">
+      <div class="hero-text">
+        <h1>Welcome to {{title}}!</h1>
+        <p class="sub-text">
+          <mat-icon>phone</mat-icon>06/30-24-34-542
+        </p>
+        <p class="sub-text">
+          <mat-icon>mail</mat-icon>szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+        </p>
+      </div>
+    </div>
+
+
+    <mat-drawer #drawer class="sidenav" position="end">
+      <button mat-button routerLink="/login"> Login </button>
+      <button mat-button routerLink="/profile" disabled> Profile </button>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <mat-toolbar class="menu-panel">
+        <mat-toolbar-row>
+          <button mat-button routerLink="/home">
+            <mat-icon>house</mat-icon>
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/products">
+            <mat-icon>store</mat-icon>
+            Products
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/forum">
+            <mat-icon>question_answer</mat-icon>
+            Forum
+          </button>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/connect">
+            <mat-icon>alternate_email</mat-icon>
+            Connect
+          </button>
+          <span class="spacer"></span>
+          <button mat-button (click)="drawer.toggle()">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+
+
+
+
+  </div>
+
+  </mat-drawer-container>
+
+-->
