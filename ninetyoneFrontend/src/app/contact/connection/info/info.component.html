@@ -1,26 +1,23 @@
-<!--<nav mat-tab-nav-bar headerPosition="below">
-  <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
-    #rla="routerLinkActive" [active]="rla.isActive">
-    {{link.label}}
-  </a>
-</nav>
-<router-outlet></router-outlet>-->
-
-
-
-<!--https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+<div class="main-container">
+  <div class="info-text">
+    <h1>Contact</h1>
+    <p class="sub-text">
+      <mat-icon>phone</mat-icon>06/30-24-34-542
+    </p>
+    <p class="sub-text">
+      szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+    </p>
+  </div>
+  <!--https://developers.google.com/maps/documentation/javascript/adding-a-google-map
   and https://angular-maps.com/guides/getting-started/-->
-<h1>{{ title }}</h1>
-
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng" >
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
-
-
-
-
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <div class="container">
+   <!-- <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>-->
+  </div>
+</div>
 
 
 

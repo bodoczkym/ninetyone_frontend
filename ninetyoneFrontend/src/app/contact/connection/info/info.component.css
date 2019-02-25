@@ -7,9 +7,28 @@
     background-color: rgba(148, 74, 52, 0.9);
 }
 
-agm-map {
+.main-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-top: 5%;
+    justify-content: space-around;
+}
+
+.main-container .info-text {
+    color: white;
+    text-align: center;
+}
+
+.main-container .container {
+    border: 5px solid rgb(255, 98, 50);/*rgba(148, 74, 52, 0.9);*/
     height: 300px;
     width: 40%;
-    position: relative;
-    left: 55%;
 }
+
+agm-map {
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+
