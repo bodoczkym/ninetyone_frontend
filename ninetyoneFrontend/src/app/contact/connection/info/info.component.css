@@ -4,5 +4,12 @@
 }
 
 .mat-tab-nav-bar{
-    background-color: rgb(255, 98, 50, 0.9);
+    background-color: rgba(148, 74, 52, 0.9);
+}
+
+agm-map {
+    height: 300px;
+    width: 40%;
+    position: relative;
+    left: 55%;
 }
