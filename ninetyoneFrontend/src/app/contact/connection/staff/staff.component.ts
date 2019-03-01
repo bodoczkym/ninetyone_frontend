@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageToStaffDialogComponent } from './message-to-staff-dialog/message-to-staff-dialog.component';
 import { RateComponent } from './rate/rate.component';
+import { StaffService } from './staff.service';
+import { User } from './../../../User';
+
 
 @Component({
   selector: 'app-staff',
@@ -9,7 +12,15 @@ import { RateComponent } from './rate/rate.component';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
-  constructor(public dialog: MatDialog) { }
+
+  users: User[];
+
+  constructor(public dialog: MatDialog,
+              private userService: StaffService) { }
+
+  async ngOnInit() {
+        this.users = await this.userService.getIssues();
+    }
 
   message(): void {
     const dialogRef1 = this.dialog.open(MessageToStaffDialogComponent, {
@@ -28,10 +39,6 @@ export class StaffComponent implements OnInit {
     dialogRef2.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }
-
-
-  async ngOnInit() {
   }
 
 }

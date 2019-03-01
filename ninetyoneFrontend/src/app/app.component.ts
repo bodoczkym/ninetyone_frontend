@@ -54,7 +54,7 @@ export class AppComponent {
       index: 3
     },
     {
-      label: 'Send note about the website',
+      label: 'Techs',
       link: './products/techs',
       index: 3
     }

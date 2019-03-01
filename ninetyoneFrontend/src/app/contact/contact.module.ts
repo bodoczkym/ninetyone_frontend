@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 import { StaffComponent } from './connection/staff/staff.component';
 import { JobsComponent } from './connection/jobs/jobs.component';
@@ -21,15 +22,14 @@ import { NoteComponent } from './connection/note/note.component';
 import { MessageToStaffDialogComponent } from './connection/staff/message-to-staff-dialog/message-to-staff-dialog.component';
 import { RateComponent } from './connection/staff/rate/rate.component';
 
-import { HttpClientModule } from '@angular/common/http';
+// Rating
 import { BarRatingModule } from '../../../../../../ninetyone/ninetyone_frontend/ninetyoneFrontend/node_modules/ng2-bar-rating';
 import { StarRatingModule } from '../../../node_modules/angular-star-rating';
+
 // Google Maps
 import { AgmCoreModule  } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
 
 @NgModule({
   declarations: [
@@ -53,8 +53,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
-    /*Http*/
-    HttpClientModule,
+    MatListModule,
+    /* Rating */
     BarRatingModule,
     StarRatingModule.forRoot(),
     /* Google Maps */

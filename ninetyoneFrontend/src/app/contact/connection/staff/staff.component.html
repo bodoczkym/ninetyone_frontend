@@ -11,76 +11,87 @@
           import from sql
           like and message buttons should get link
 -->
+
+
 <div class="container">
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title>Big Chungus</mat-card-title>
-    <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="/assets/images/img1.png" class="image" alt="BC">
-  <mat-card-content class="content" *ngIf="collapsed1">
-    <p>He is sooo funny.</p>
-  </mat-card-content>
-  <mat-card-actions *ngIf="!collapsed1">
-    <button mat-button (click)="collapsed1=true">Több</button>
-  </mat-card-actions>
-  <mat-card-actions>
-    <button mat-button (click)=rate()>RATE</button>
-    <button mat-button (click)=message()>
-      <mat-icon>email</mat-icon>
-      MESSAGE
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>Big Chungus</mat-card-title>
+      <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="/assets/images/img1.png" class="image" alt="BC">
+    <mat-card-content class="content" *ngIf="collapsed1">
+      <p>He is sooo funny.</p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!collapsed1">
+      <button mat-button (click)="collapsed1=true">Több</button>
+    </mat-card-actions>
+    <mat-card-actions>
+      <button mat-button (click)=rate()>RATE</button>
+      <button mat-button (click)=message()>
+        <mat-icon>email</mat-icon>
+        MESSAGE
+      </button>
+    </mat-card-actions>
+  </mat-card>
 
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title>Mustache Man</mat-card-title>
-    <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="/assets/images/img2.jpg" class="image" alt="BC">
-  <mat-card-content class="content" *ngIf="collapsed2">
-    <p>He is sooo funny.</p>
-  </mat-card-content>
-  <mat-card-actions *ngIf="!collapsed2">
-    <button mat-button (click)="collapsed2=true">Több</button>
-  </mat-card-actions>
-  <mat-card-actions>
-    <button mat-button (click)=rate()>RATE</button>
-    <button mat-button (click)=message()>
-      <mat-icon>email</mat-icon>
-      MESSAGE
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>Mustache Man</mat-card-title>
+      <mat-card-subtitle>https://www.youtube.com/watch?v=YFXlzKDjL8E</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="/assets/images/img2.jpg" class="image" alt="BC">
+    <mat-card-content class="content" *ngIf="collapsed2">
+      <p>He is sooo funny.</p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!collapsed2">
+      <button mat-button (click)="collapsed2=true">Több</button>
+    </mat-card-actions>
+    <mat-card-actions>
+      <button mat-button (click)=rate()>RATE</button>
+      <button mat-button (click)=message()>
+        <mat-icon>email</mat-icon>
+        MESSAGE
+      </button>
+    </mat-card-actions>
+  </mat-card>
 
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title>Weird Woman</mat-card-title>
-    <mat-card-subtitle>https://twitter.com/hashtag/weirdo</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="/assets/images/img3.jpg" class="image" alt="BC">
-  <mat-card-content class="content"  >
-    <p>He is sooo funnyjnfkj nfkjas gnjkasb gkadbgdkafhbghd fabghl fabgdjfbjad fljgkrskaljgbrjks ahlkjabgkl
-      fdjagblkfdjabgl kdfajbgldkfagbl fdabl hdafbgkhbaed lghbrwlgbl krejabgraebgb.</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)=rate()>RATE</button>
-    <button mat-button (click)=message()>
-      <mat-icon>email</mat-icon>
-      MESSAGE
-    </button>
-  </mat-card-actions>
-</mat-card>
-
-
-<p>TODO: dynamical data loadin
-   after that fix like and message button
-</p>
-
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>Weird Woman</mat-card-title>
+      <mat-card-subtitle>https://twitter.com/hashtag/weirdo</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="/assets/images/img3.jpg" class="image" alt="BC">
+    <mat-card-content class="content">
+      <p>He is sooo funnyjnfkj nfkjas gnjkasb gkadbgdkafhbghd fabghl fabgdjfbjad fljgkrskaljgbrjks ahlkjabgkl
+        fdjagblkfdjabgl kdfajbgldkfagbl fdabl hdafbgkhbaed lghbrwlgbl krejabgraebgb.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)=rate()>RATE</button>
+      <button mat-button (click)=message()>
+        <mat-icon>email</mat-icon>
+        MESSAGE
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
+<button mat-button (click)=getIssues()>gte1</button>
+<button mat-button (click)=getIssue(2)>sdf</button>
 
+<p>TODO: dynamical data loadin
+  after that fix like and message button
+</p>
+
+<h1>Felhasználók listázása</h1>
+<mat-nav-list>
+  <a *ngFor="let user of users" mat-list-item>
+    <h3 matLine>{{ user.username }}</h3>
+    <button mat-icon-button (click)="getIssues(link)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </a>
+</mat-nav-list>
