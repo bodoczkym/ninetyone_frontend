@@ -1,31 +1,30 @@
-.mat-tab-link {
-    flex: auto;    
-    color: rgb(255, 255, 255);
-}
-
-.mat-tab-nav-bar{
-    background-color: rgb(255, 98, 50, 0.9);
-}
-
 .container {
     width:  85%;
-    object-position: center
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
 }
 
-.mat-card{
+/*.container .a .b .c*/ .mat-card{
     max-width: 200px;
     max-height: 400px;
-    color: /*rgb(57, 75, 16);*/rgb(93, 99, 75);
-    display: inline-block;
+    color:rgb(99, 89, 75);
     position: relative;
     text-align: left;
     margin: 10px;
-    box-shadow: 4px 2px 10px;
-   /*rgb(136, 201, 72, 0.3);/*rgb(164, 216, 113, 0.9);*/
+    box-shadow: 4px 2px 10px;   
+}
+
+.mat-card-title {
+    color: rgb(93, 99, 75);
+    position: relative;
+    text-align: left;
+    flex: auto;
 }
 
 .image{
     max-height: 150px;
+    text-align: center
 }
 
 .mat-card-subtitle {
@@ -38,11 +37,6 @@
     height: 52px;
     overflow-x: hidden;
     overflow-y: scroll
-}
-
-.mat-card-avatar{
-    background-image: url('/assets/images/img1.png');
-    background-size: cover;
 }
 
 .mat-card-actions {

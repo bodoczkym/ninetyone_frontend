@@ -22,9 +22,11 @@ export class StaffComponent implements OnInit {
         this.users = await this.userService.getIssues();
     }
 
-  message(): void {
+  message(emailAddress: string): void {
     const dialogRef1 = this.dialog.open(MessageToStaffDialogComponent, {
     });
+
+    console.log(emailAddress);
 
     dialogRef1.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

@@ -1,3 +1,38 @@
+<p>TODO: dynamical data loadin
+  after that fix like and message button
+</p>
+
+<div class="container">
+  <div *ngFor="let user of users" class="a">
+    <div *ngIf="user.role as r"class="b">
+      <div *ngIf="r === 'ROLE_OWNER'" class="c">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>{{ user.username }}</mat-card-title>
+            <mat-card-subtitle>{{ user.reference }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{user.img}}" class="image" alt="BC">
+          <mat-card-content class="content">
+            <p>{{ user.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)=rate()>RATE</button>
+            <button mat-button (click)=message(user.email)>
+              <mat-icon>email</mat-icon>
+              MESSAGE
+            </button>
+          </mat-card-actions>
+        </mat-card>
+        <!-- <button mat-icon-button (click)="getIssues(link)">
+        <mat-icon>delete</mat-icon>
+      </button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!--<nav mat-tab-nav-bar headerPosition="below">
   <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive
     #rla="routerLinkActive" [active]="rla.isActive">
@@ -12,7 +47,7 @@
           like and message buttons should get link
 -->
 
-
+<!--
 <div class="container">
   <mat-card>
     <mat-card-header>
@@ -79,19 +114,4 @@
   </mat-card>
 </div>
 
-<button mat-button (click)=getIssues()>gte1</button>
-<button mat-button (click)=getIssue(2)>sdf</button>
-
-<p>TODO: dynamical data loadin
-  after that fix like and message button
-</p>
-
-<h1>Felhasználók listázása</h1>
-<mat-nav-list>
-  <a *ngFor="let user of users" mat-list-item>
-    <h3 matLine>{{ user.username }}</h3>
-    <button mat-icon-button (click)="getIssues(link)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </a>
-</mat-nav-list>
+-->
