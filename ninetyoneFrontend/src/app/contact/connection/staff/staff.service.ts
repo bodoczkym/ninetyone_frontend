@@ -16,23 +16,23 @@ interface FeathersResponse<T> {
 })
 export class StaffService {
 
-    private issueUrl = 'http://localhost:8080/users';
+    private userUrl = 'http://localhost:8080/users';
 
 
     constructor(
         private http: HttpClient
     ) { }
 
-    getIssue(id: number): Promise<User> {
-        return this.http.get<User>(`${this.issueUrl}/${id}`).toPromise();
+    getUser(id: number): Promise<User> {
+        return this.http.get<User>(`${this.userUrl}/${id}`).toPromise();
     }
 
-    getIssues(): Promise<User[]> {
+    getUsers(): Promise<User[]> {
         /*return this.http.get<FeathersResponse<User>>(this.issueUrl)
           .map(response => response.data)
           .toPromise();*/
         return this.http.get<User[]>(
-            this.issueUrl,
+            this.userUrl,
             httpOptions
         ).toPromise();
     }

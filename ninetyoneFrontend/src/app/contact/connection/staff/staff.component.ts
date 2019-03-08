@@ -19,8 +19,8 @@ export class StaffComponent implements OnInit {
               private userService: StaffService) { }
 
   async ngOnInit() {
-        this.users = await this.userService.getIssues();
-    }
+        this.users = await this.userService.getUsers();
+  }
 
   message(emailAddress: string): void {
     const dialogRef1 = this.dialog.open(MessageToStaffDialogComponent, {
@@ -29,7 +29,7 @@ export class StaffComponent implements OnInit {
     console.log(emailAddress);
 
     dialogRef1.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The message dialog was closed');
     });
   }
 
@@ -39,7 +39,7 @@ export class StaffComponent implements OnInit {
     });
 
     dialogRef2.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The rate dialog was closed');
     });
   }
 

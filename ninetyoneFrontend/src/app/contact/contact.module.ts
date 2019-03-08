@@ -9,11 +9,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 import { StaffComponent } from './connection/staff/staff.component';
 import { JobsComponent } from './connection/jobs/jobs.component';
@@ -28,8 +28,10 @@ import { StarRatingModule } from '../../../node_modules/angular-star-rating';
 
 // Google Maps
 import { AgmCoreModule  } from '@agm/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       apiKey: 'AIzaSyCAiF0cW5o63RYvRx0cWtz-sHpeaTn0Ci0'
     }),
     FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   entryComponents: [

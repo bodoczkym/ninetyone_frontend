@@ -2,7 +2,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    color: rgb(93, 99, 75);
+    color: white;
 }
 
 .dialog .input-field {
@@ -12,11 +12,11 @@
 }
 
 .cancel {
-    color: rgb(93, 99, 75);
+    color: rgb(255, 98, 50);
     background-color: rgb(236, 243, 229);
 }
 
 .send {
-    color: rgb(93, 99, 75);
-    background-color: rgb(164, 216, 113);
+    color: white;
+    background-color: rgb(255, 98, 50);
 }

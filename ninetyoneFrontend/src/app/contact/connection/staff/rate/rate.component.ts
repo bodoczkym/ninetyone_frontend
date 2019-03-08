@@ -7,6 +7,8 @@ import {
   RatingChangeEvent
 } from '../../../../../../node_modules/angular-star-rating';
 
+import { User } from './../../../../User';
+
 enum COLORS {
   RED = '#DD2C00',
   YELLOW = '#FFCA28',
@@ -24,9 +26,10 @@ export class RateComponent implements OnInit {
 
   @Input() rating: number ;
   @Output() ratingChange: EventEmitter<number> = new EventEmitter();
-  myLabelText = 'Rate XY';
+  myLabelText = 'Rate ';
   onClickResult: ClickEvent;
   onHoverRatingChangeResult: HoverRatingChangeEvent;
+  user: User;
 
   constructor(public dialogRef: MatDialogRef<RateComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -65,10 +68,6 @@ export class RateComponent implements OnInit {
     this.onClickResult = $event;
   }
 
-  onHoverRatingChange = ($event: HoverRatingChangeEvent) => {
-    console.log('onHoverRatingChange $event: ', $event);
-    this.onHoverRatingChangeResult = $event;
-  }
 
 }
 

@@ -9,6 +9,41 @@
 
 
 
-  <p>TODO:  a form whitin the customer could send a note (a few rows maybe?)
+<p>TODO: display sent datas(or fix save function on backend) AND
+  make this page beautiful
+</p>
 
-  </p>
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="mat-form-field" required>
+    <input formControlName="name" matInput type="text" maxlength="20" placeholder="Name" required pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$"/>
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+      Name is required!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="mat-form-field">
+    <textarea formControlName="text" #note matInput maxlength="300" rows="5" placeholder="Write your ideas here"
+      class="input"></textarea>
+    <mat-hint>{{note.value.length}} / 500</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button class="send" type="submit" [disabled]="noteForm.invalid"> Send </button>
+</form>
+{{noteForm.value | json}}
+{{noteForm.get('name').value}}
+{{noteForm.get('text').value}}
+{{noteForm.get('name').errors | json}}
+
+
+
+<div class="container">
+  <div *ngFor="let note of notes">
+    <mat-card class="mat-card1">
+      <mat-card-title class="content1">
+        <p>{{ note.text }}</p>
+      </mat-card-title>
+      <mat-card-content>{{ note.name }}</mat-card-content>
+    </mat-card>
+    <!-- <button mat-icon-button (click)="getIssues(link)">
+        <mat-icon>delete</mat-icon>
+      </button>-->
+  </div>
+</div>

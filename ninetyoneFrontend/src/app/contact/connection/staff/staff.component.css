@@ -32,11 +32,21 @@
     font-size: small;
 }
 
+a:link, a:visited {
+    color: rgb(128, 143, 82);
+    text-decoration: none;
+  }
+  
+a:hover, a:active {
+    color: rgb(93, 99, 75);;
+  }
+
 .content {
     color: rgb(93, 99, 75);
     height: 52px;
     overflow-x: hidden;
-    overflow-y: scroll
+    overflow-y: auto;
+    text-align: justify;
 }
 
 .mat-card-actions {
