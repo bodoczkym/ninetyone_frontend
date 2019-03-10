@@ -1,9 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { FormGroup, FormBuilder, Validators,
+import { FormsModule, FormGroup, FormBuilder, Validators,
           FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Contact } from './../../../../contact';
+import { MessageToStaffService } from './message-to-staff.service';
+import { HttpClient } from '@angular/common/http';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -22,21 +25,48 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class MessageToStaffDialogComponent implements OnInit {
 
-  email: string;
-  subject: string;
+  mailOptions: Contact;
+  from: string;
+  subj: string;
+  tex: string;
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-  matcher = new MyErrorStateMatcher();
+  mailForm = this.fb.group({
+    email: ['', [Validators.required]],
+    subject: [''],
+    text: ['']
+  });
+  @Input() sendingMail: Contact;
+  @Output() save = new EventEmitter<Contact>();
+
+  get email() { return this.mailForm.get('email'); }
+  get subject() { return this.mailForm.get('subject'); }
+  get text() { return this.mailForm.get('text'); }
+
 
   constructor(public dialogRef: MatDialogRef<MessageToStaffDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private fb: FormBuilder,
+              private mailService: MessageToStaffService,
+              private http: HttpClient) { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.mailOptions = Object.assign(new Contact(), this.mailForm.value);
+    this.from = this.mailOptions.email;
+    this.subj = this.mailOptions.subject;
+    this.tex = this.mailOptions.text;
+
+
+    /*this.save.emit(
+      Object.assign(new Note(), this.noteForm.value)
+    );
+    */
+
+
+    /*this.mailService.sendMail(Object.assign(new Contact(), this.mailForm.value));*/
+}
 
   /* TODO */
   send() {
@@ -46,5 +76,6 @@ export class MessageToStaffDialogComponent implements OnInit {
   cancel() {
     this.dialogRef.close();
   }
+
 
 }

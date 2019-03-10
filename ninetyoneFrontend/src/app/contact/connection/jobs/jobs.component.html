@@ -6,6 +6,25 @@
 </nav>
 <router-outlet></router-outlet>-->
 
-  <p>TODO:  actual job probabilities, which the employees can edit
+<p>TODO: actual job probabilities, which the employees can edit</p>
 
-  </p>
+<mat-list>
+  <h3>Engineering Jobs</h3>
+  <div *ngFor="let job of jobs">
+    <div *ngIf="job.name=='engineeringJob'">
+      <mat-list-item>
+        <mat-icon mat-list-icon>code</mat-icon>
+        <h4 mat-line>{{job.description}}</h4>
+      </mat-list-item>
+    </div>
+  </div>
+  <h3>Project Managemant</h3>
+  <div *ngFor="let job of jobs">
+    <div *ngIf="job.name=='projectManagemant'">
+      <mat-list-item>
+        <mat-icon mat-list-icon>face</mat-icon>
+        <h4 mat-line>{{job.description}}</h4>
+      </mat-list-item>
+    </div>
+  </div>
+</mat-list>

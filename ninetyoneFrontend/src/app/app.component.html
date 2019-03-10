@@ -1,8 +1,18 @@
 <!--TODO: when the page is undersized the buttons in the menu don't wrap-->
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" position="end">
-    <button mat-button routerLink="/login" (click)="drawer.toggle()"> Login </button>
-    <button mat-button routerLink="/profile" disabled> Profile </button>
+    <button mat-button *ngIf="!authService.isLoggedIn" routerLink="/login" (click)="drawer.toggle()">
+      <mat-icon>person_pin</mat-icon>Login
+    </button>
+    <button mat-button *ngIf="authService.isLoggedIn" routerLink="/profile">
+      <mat-icon> insert_emoticon</mat-icon> Profile
+    </button>
+    <button mat-button *ngIf="authService.isLoggedIn" routerLink="/profile">
+      <mat-icon> local_grocery_store</mat-icon> Cart
+    </button>
+    <button mat-button *ngIf="authService.isLoggedIn" (click)="logout()">
+      <mat-icon>meeting_room</mat-icon>Logout
+    </button>
   </mat-drawer>
   <div class="hero-image">
     <div class="sidenav-content">
@@ -39,8 +49,8 @@
       <nav mat-tab-nav-bar class="mat-tab-nav-bar" mat-align-tabs="center" *ngIf="router.url==='/connect'
       || router.url==='/connect/staff' || router.url==='/connect/jobs' || router.url==='/connect/note' || 
       router.url==='/connect/info'">
-        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksConnect" [routerLink]="link.link" routerLinkActive
-          #rla="routerLinkActive" [active]="rla.isActive">
+        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksConnect" [routerLink]="link.link"
+          routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
           {{link.label}}
         </a>
       </nav>
@@ -49,8 +59,8 @@
       || router.url==='/products/kitchen' || router.url==='/products/livingroom' ||
        router.url==='/products/bedroom' || 
       router.url==='/products/bathroom' || router.url==='/products/techs'">
-        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksProducts" [routerLink]="link.link" routerLinkActive
-          #rla="routerLinkActive" [active]="rla.isActive">
+        <a mat-tab-link class="mat-tab-link" *ngFor="let link of navLinksProducts" [routerLink]="link.link"
+          routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
           {{link.label}}
         </a>
       </nav>

@@ -16,32 +16,30 @@
   </mat-dialog-actions>
 
 </div>-->
-<div class="dialog">
+<form [formGroup]="mailForm" class="dialog" (ngSubmit)="onSubmit()">
   <h1 mat-dialog-title> Send email to XY </h1>
   <div mat-dialog-content>
-    <mat-form-field class="input-field">
-      <input matInput type="email" placeholder="john.doe@example.com" [formControl]="emailFormControl" [errorStateMatcher]="matcher"/>
-      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
+    <mat-form-field class="input-field" required>
+      <input formControlName="email" matInput placeholder="john.doe@example.com" type="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+      <mat-error *ngIf="email.invalid && (email.dirty || email.touched) && email.errors.required">
+        Email address is required!
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="input-field" [formControl]="">
-      <input matInput placeholder="Subject" />
+    <mat-form-field class="input-field">
+      <input formControlName="subject" matInput placeholder="Subject" />
     </mat-form-field>
     <mat-form-field class="input-field" appearance="outline">
       <mat-label>Write your message here</mat-label>
-      <textarea matInput #message maxlength="1000" rows="7"></textarea>
+      <textarea formControlName="text" matInput #message maxlength="1000" rows="7"></textarea>
       <mat-hint>{{message.value.length}} / 1000</mat-hint>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button class="cancel" (click)=cancel()>Cancel</button>
-    <button mat-raised-button class="send" (click)=send()> Send </button>
+    <button mat-raised-button class="send" type="submit" (click)=send() [disabled]="mailForm.invalid"> Send </button>
   </div>
-</div>
+</form>
+{{mailForm.value | json}}
 <!--
 <mat-form-field class="mat-form-field">
   <input id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob" />

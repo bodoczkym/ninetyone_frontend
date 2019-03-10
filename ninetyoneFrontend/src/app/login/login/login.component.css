@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-top: 5%;
+    justify-content: space-around;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    color: white;
+}
+
+.button {
+    width: auto;
+    color: white;
+    background-color: rgb(255, 98, 50);
+}

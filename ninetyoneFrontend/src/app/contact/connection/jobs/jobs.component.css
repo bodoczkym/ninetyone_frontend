@@ -1,8 +1,23 @@
-.mat-tab-link {
-    flex: auto;    
-    color: rgb(255, 255, 255); 
+mat-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+    color: white;   
 }
 
-.mat-tab-nav-bar{
-    background-color: rgb(255, 98, 50, 0.9);
+h3 {
+    font-weight: lighter;
 }
+
+h4 {
+    color: white;
+    font-weight: normal !important;
+}
+
+mat-icon {
+    color:white;
+}
+

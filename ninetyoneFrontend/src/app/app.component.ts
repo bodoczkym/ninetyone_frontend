@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = '91';
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              private authService: AuthService) { }
 
   navLinksConnect = [
     {
@@ -60,5 +62,9 @@ export class AppComponent {
     }
   ];
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
 
 }

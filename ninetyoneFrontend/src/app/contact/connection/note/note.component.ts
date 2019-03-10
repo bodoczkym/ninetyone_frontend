@@ -41,6 +41,6 @@ export class NoteComponent implements OnInit, OnChanges {
     );
     */
     this.noteService.addNote(Object.assign(new Note(), this.noteForm.value));
-}
+  }
 
 }

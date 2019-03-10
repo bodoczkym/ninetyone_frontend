@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Job } from './../../../Job';
+import { JobsService } from './jobs.service';
+
 
 @Component({
   selector: 'app-jobs',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobsComponent implements OnInit {
 
-  constructor() { }
+  jobs: Job[];
 
-  ngOnInit() {
+  constructor( private jobsService: JobsService) { }
+
+  async ngOnInit() {
+        this.jobs = await this.jobsService.getJobs();
   }
 
 }
