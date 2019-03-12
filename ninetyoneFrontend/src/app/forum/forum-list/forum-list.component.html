@@ -1,3 +1,72 @@
-<p>
-  forum-list works!
-</p>
+<p> TODO: maybe make pop-up for the question form</p>
+
+<form [formGroup]="forumForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="mat-form-field" required>
+    <input formControlName="name" matInput type="text" maxlength="20" placeholder="Name" required
+      pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$" />
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+      Name is required!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field" required>
+    <input formControlName="question" matInput type="text" maxlength="150" placeholder="Question" required />
+    <mat-error>
+      Question is required!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="mat-form-field">
+    <textarea formControlName="description" #note matInput maxlength="300" rows="5" placeholder="Description"
+      class="input"></textarea>
+    <mat-hint>{{note.value.length}} / 300</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button class="send" type="submit" [disabled]="forumForm.invalid"> Send </button>
+</form>
+
+
+
+<div class="container">
+  <div *ngFor="let question of questions; let i = index">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ question.question }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ question.name }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p *ngIf="!question.description==''">
+        {{ question.description }}
+      </p>
+      <mat-divider></mat-divider>
+
+      <div *ngFor="let comment of comments">
+        <div *ngIf="comment.qid == (i+1)" class="comment">
+          <p>{{ comment.comment }}</p>
+          <p>{{ comment.commentName }}</p>
+        </div>
+      </div>
+
+      <form [formGroup]="commentForm" (ngSubmit)="sendComment(i+1)" >
+        <mat-form-field  class="comment-field">
+          <input matInput formControlName="commentName" placeholder="Name">
+        </mat-form-field>
+        <textarea formControlName="comment" class="comment-field" placeholder="Comment" maxlength="300" rows="2"> </textarea>
+        <button mat-raised-button class="send" type="submit" [disabled]="commentForm.invalid"> Send </button>
+      </form>
+    </mat-expansion-panel>
+  </div>
+</div>
+
+
+<!--
+
+   <mat-card class="mat-card">
+      <mat-card-title class="content">
+        <p>{{ question.question }}</p>
+      </mat-card-title>
+      <mat-card-content *ngIf="!question.description==''">{{ question.description }}</mat-card-content>
+    </mat-card>
+
+
+-->

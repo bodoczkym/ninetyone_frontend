@@ -19,7 +19,7 @@ export class AppComponent {
       index: 0
     },
     {
-      label: 'Apply for job',
+      label: 'Empty jobs',
       link: './connect/jobs',
       index: 1
     },
