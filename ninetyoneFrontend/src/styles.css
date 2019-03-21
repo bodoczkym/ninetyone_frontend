@@ -2,6 +2,7 @@
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '../node_modules/ngx-bar-rating/themes/br-stars-theme';
 @import '../node_modules/css-star-rating/css/star-rating.css';
+@import "~nouislider/distribute/nouislider.min.css";
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
@@ -19,3 +20,4 @@ body {
     color:   rgb(93, 99, 75);
     flex: auto;
   }
+

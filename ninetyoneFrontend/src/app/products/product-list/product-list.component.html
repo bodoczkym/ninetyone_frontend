@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="search">
+
+        <input type="text" matInput placeholder="Search by name" [(ngModel)]="searchTerm"/>
+
+        <div class="price-search">
+            <p> Search by price </p>
+            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options">
+            </ng5-slider>
+        </div>
+
+        <div class="rate-search">
+            <p> Search by rating </p>
+            <ng5-slider [(value)]="rateValue" [options]="rateOptions" ></ng5-slider>
+        </div>
+
+        <div *ngFor="let filter of filters">
+            <mat-checkbox> {{ filter }} </mat-checkbox>
+        </div>
+        <!-- <div *ngIF="isAdmin>search for stocknumber</div>-->
+
+    </div>
+    <div class="border"> </div>
+    <div class="products">
+        <div *ngFor="let product of products | productFilter:searchTerm | priceFilter:value:highValue">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ product.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.price }} euro</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{product.img}}" class="image" alt="BC">
+            </mat-card>
+        </div>
+    </div>
+</div>
