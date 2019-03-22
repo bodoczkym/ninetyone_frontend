@@ -4,6 +4,9 @@ import { ProductListService } from './product-list.service';
 import { Product } from './../../Product';
 import { } from 'ng2-nouislider';
 import { Options, LabelType } from 'ng5-slider';
+import { ProductFilterFilterPipe } from './product-filter-filter.pipe';
+import { SingleProductService } from './single-product/single-product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -24,6 +27,8 @@ export class ProductListComponent implements OnInit {
   highValue: number;
   options: Options;
 
+  checkBoxFilter: string;
+
   rateValue = 5;
   rateOptions: Options = {
     floor: 1,
@@ -34,7 +39,10 @@ export class ProductListComponent implements OnInit {
   };
 
   constructor(public dialog: MatDialog,
-              private productListService: ProductListService) {
+              private productListService: ProductListService,
+              private singleProductService: SingleProductService,
+              private route: ActivatedRoute,
+              private router: Router) {
                }
 
   async ngOnInit() {
@@ -46,6 +54,7 @@ export class ProductListComponent implements OnInit {
     this.getMinMaxPrice(this.products);
     this.getSliderValues();
   }
+
 
   getSliderValues() {
     this.value = this.minPrice;
@@ -101,6 +110,11 @@ export class ProductListComponent implements OnInit {
     return this.filters;
   }
 
+  openSingleProductPage(product: Product) {
+    this.singleProductService.getUrl(product.type, product.stocknumber);
+    // route
+    this.router.navigate(['/products/' + product.type + '/' + product.stocknumber]);
+  }
 
 
   /*

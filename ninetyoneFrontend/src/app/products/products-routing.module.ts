@@ -7,6 +7,7 @@ import { BathroomComponent } from './product-list/bathroom/bathroom.component';
 import { LivingRoomComponent } from './product-list/living-room/living-room.component';
 import { TechsComponent } from './product-list/techs/techs.component';
 import { BedroomComponent } from './product-list/bedroom/bedroom.component';
+import { SingleProductComponent } from './product-list/single-product/single-product.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'bedroom',
     component: BedroomComponent
+  },
+  {
+    path: 'bedroom/:id',
+    component: SingleProductComponent
   }
 ];
 @NgModule({

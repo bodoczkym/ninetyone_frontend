@@ -23,15 +23,17 @@ import { TechsComponent } from './product-list/techs/techs.component';
 // Filter
 import { ProductFilterPipe } from './product-list/product-filter.pipe';
 import { ProductPriceFilterPipe } from './product-list/product-price-filter.pipe';
+import { ProductFilterFilterPipe } from './product-list/product-filter-filter.pipe';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Ng5SliderModule } from 'ng5-slider';
+import { SingleProductComponent } from './product-list/single-product/single-product.component';
 
 @NgModule({
-  declarations: [ ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent, KitchenComponent, LivingRoomComponent,
-    BedroomComponent, BathroomComponent, TechsComponent],
+  declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,
+     KitchenComponent, LivingRoomComponent, BedroomComponent, BathroomComponent, TechsComponent, SingleProductComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
