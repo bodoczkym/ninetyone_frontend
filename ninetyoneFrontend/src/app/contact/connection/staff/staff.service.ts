@@ -19,6 +19,7 @@ export class StaffService {
 
     private userUrl = 'http://localhost:8080/users';
 
+    user: User;
 
     constructor(
         private http: HttpClient
@@ -34,5 +35,21 @@ export class StaffService {
             httpOptions
         ).toPromise();
     }
+
+    getRate(rate: number) {
+        console.log('The rate is: ' + rate);
+        this.user.rates = this.user.rates + rate;
+        this.user.voters = this.user.voters + 1;
+        this.sendRateToService(this.user);
+        console.log('The user\'s rate is: ' + (this.user.rates / this.user.voters));
+    }
+
+    sendRateToService(user: User): Promise<User> {
+        return this.http.put<User>(
+          this.userUrl,
+          user,
+          httpOptions
+        ).toPromise();
+      }
 
 }

@@ -15,7 +15,8 @@
             <p>{{ user.description }}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)=rate()>RATE</button>
+            <button mat-button *ngIf="user.rates!==0" (click)=rate(user) type="number">RATE {{ user.rates / user.voters | number:0 }}</button>
+            <button mat-button *ngIf="user.rates===0" (click)=rate(user)>RATE</button>
             <button mat-button (click)=message(user.email)>
               <mat-icon>email</mat-icon>
               MESSAGE

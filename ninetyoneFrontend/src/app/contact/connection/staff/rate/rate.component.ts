@@ -6,6 +6,7 @@ import {
   HoverRatingChangeEvent,
   RatingChangeEvent
 } from '../../../../../../node_modules/angular-star-rating';
+import { StaffService } from './../staff.service';
 
 import { User } from './../../../../User';
 
@@ -32,7 +33,8 @@ export class RateComponent implements OnInit {
   user: User;
 
   constructor(public dialogRef: MatDialogRef<RateComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private staffService: StaffService) {
  }
 
   ngOnInit() {
@@ -43,7 +45,6 @@ export class RateComponent implements OnInit {
     this.rating = index;
     this.ratingChange.emit(this.rating);
   }*/
-
 
 
   getColor(r: number) {
@@ -63,11 +64,12 @@ export class RateComponent implements OnInit {
 
 
   onClick = ($event: ClickEvent, rating) => {
-    this.getColor(rating);
+    console.log(rating);
+    this.getColor($event.rating);
     console.log('onClick $event: ', $event);
     this.onClickResult = $event;
+    this.staffService.getRate($event.rating);
   }
-
 
 }
 

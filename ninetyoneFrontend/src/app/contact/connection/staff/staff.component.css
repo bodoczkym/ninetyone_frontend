@@ -50,7 +50,8 @@ a:hover, a:active {
 }
 
 .mat-card-actions {
-    /*display:flex;*/
+    display:flex;
+    flex-direction: row;
     color: rgb(93, 99, 75);
     flex:auto;
 }

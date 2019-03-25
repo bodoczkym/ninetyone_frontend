@@ -6,7 +6,8 @@ export class User {
     role: string;
     reference: string;
     description: string;
-    rate: number;
+    rates: number;
+    voters: number;
     img: string;
     email: string;
 }
