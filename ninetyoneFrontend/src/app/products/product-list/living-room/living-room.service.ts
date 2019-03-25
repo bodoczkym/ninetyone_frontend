@@ -9,7 +9,7 @@ import { Product } from './../../../Product';
 })
 export class LivingRoomService {
 
-  private productUrl = 'http://localhost:8080/livingroom';
+  private productUrl = 'http://localhost:8080/living-room';
 
   constructor(
       private http: HttpClient

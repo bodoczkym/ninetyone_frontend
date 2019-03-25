@@ -21,8 +21,8 @@
 
     </div>
     <div class="border"> </div>
-    <div class="products">
-        <div *ngFor="let product of products">
+    <div *ngIf="router.url==='/products'" class="products">
+        <div *ngFor="let product of products" class="sub-products">
             <div *ngFor="let pr of product | productFilter:searchTerm | priceFilter:value:highValue ">
                 <mat-card>
                     <mat-card-header>
@@ -34,4 +34,18 @@
             </div>
         </div>
     </div>
+    <div class="products" *ngIf="router.url==='/products/kitchen' || router.url==='/products/livingroom' 
+    || router.url==='/products/bathroom' || router.url==='/products/bedroom' || 
+    router.url==='/products/techs'">
+        <div *ngFor="let product of products | productFilter:searchTerm | priceFilter:value:highValue ">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title (click)="openSingleProductPage(product)">{{ product.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.price }} euro</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{product.img}}" class="image" alt="BC">
+            </mat-card>
+        </div>
+    </div>
+
 </div>

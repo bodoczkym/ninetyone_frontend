@@ -1,7 +1,3 @@
-.spacer {
-    flex: auto; /*same as 1 1 auto*/
-}
-
 .container {
     position: relative;
     min-height: 100%;
@@ -63,6 +59,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.sub-products {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .no-result {

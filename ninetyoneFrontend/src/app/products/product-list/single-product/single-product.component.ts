@@ -10,7 +10,7 @@ import { Product } from 'src/app/Product';
 export class SingleProductComponent implements OnInit {
   product: Product;
   filters = [];
-  str: string;
+  str = '';
 
   constructor(private singleProductService: SingleProductService) { }
 
@@ -28,10 +28,9 @@ export class SingleProductComponent implements OnInit {
   filtersToString() {
     let f = [];
     for ( f of this.filters) {
-          this.str += f + ', ';
+      this.str += f + ', ';
     }
-    this.str.slice(0, -2);
-    console.log(this.str);
+    this. str = this.str.slice(0, this.str.length - 2);
   }
 
 
