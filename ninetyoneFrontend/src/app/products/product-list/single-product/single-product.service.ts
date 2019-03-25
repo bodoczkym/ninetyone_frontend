@@ -16,7 +16,13 @@ export class SingleProductService {
   ) { }
 
   getUrl(type: string, stockNumber: number) {
-    this.productUrl = 'http://localhost:8080/' + type + '/' + stockNumber;
+    console.log(type);
+    if (type === 'livingroom') {
+      this.productUrl = 'http://localhost:8080/living-room/' + stockNumber;
+    } else {
+      this.productUrl = 'http://localhost:8080/' + type + '/' + stockNumber;
+    }
+
   }
 
   getProduct(): Promise<Product> {return this.http.get<Product>(`${this.productUrl}`).toPromise();

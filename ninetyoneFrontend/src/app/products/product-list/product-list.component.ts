@@ -20,7 +20,14 @@ export class ProductListComponent implements OnInit {
   maxPrice = 0;
 
   filters = [];
-  products: Product[];
+
+  products = [];
+  bedProducts: Product[];
+  kitchenProducts: Product[];
+  livingProducts: Product[];
+  bathProducts: Product[];
+  techsProducts: Product[];
+
   searchTerm: string;
 
   value: number;
@@ -43,11 +50,21 @@ export class ProductListComponent implements OnInit {
               private singleProductService: SingleProductService,
               private route: ActivatedRoute,
               private router: Router) {
-               }
+  }
 
   async ngOnInit() {
     // get products
-    this.products = await this.productListService.getProducts();
+    this.bedProducts = await this.productListService.getBedProducts();
+    this.products.push(this.bedProducts);
+    this.kitchenProducts = await this.productListService.getKitchenProducts();
+    this.products.push(this.kitchenProducts);
+    this.livingProducts = await this.productListService.getLivingProducts();
+    this.products.push(this.livingProducts);
+    this.bathProducts = await this.productListService.getBathProducts();
+    this.products.push(this.bathProducts);
+    this.techsProducts = await this.productListService.getTechsProducts();
+    this.products.push(this.techsProducts);
+    console.log(this.products);
     // get filters to checkbox
     this.splitAndStore(this.products);
     // get min and max prices to ng5 sliders
@@ -75,15 +92,18 @@ export class ProductListComponent implements OnInit {
     };
   }
 
-  getMinMaxPrice(products: Product[]) {
+  getMinMaxPrice(products) {
     let localMaxPrice = 0;
     let localMinPrice = 0;
-    for (const pr of products) {
-      if (pr.price > localMaxPrice) {
-        localMaxPrice = pr.price;
-      }
-      if ( pr.price < localMinPrice) {
-        localMinPrice = pr.price;
+    let i: number;
+    for (i = 0; i < products.length; i++) {
+      for (const pr of products[i]) {
+        if (pr.price > localMaxPrice) {
+          localMaxPrice = pr.price;
+        }
+        if (pr.price < localMinPrice) {
+          localMinPrice = pr.price;
+        }
       }
     }
     this.maxPrice = localMaxPrice;
@@ -92,16 +112,19 @@ export class ProductListComponent implements OnInit {
     console.log(this.minPrice);
   }
 
-  splitAndStore(products: Product[]) {
+  splitAndStore(products) {
     let array = [];
-    for (const pr of products) {
-      array = pr.filters.split(':');
-      for (const f of array) {
-        if (this.filters.length === 0) {
-          this.filters.push(f);
-        }
-        if (!this.filters.includes(f)) {
-          this.filters.push(f);
+    let i: number;
+    for (i = 0; i < products.length; i++) {
+      for (const pr of products[i]) {
+        array = pr.filters.split(':');
+        for (const f of array) {
+          if (this.filters.length === 0) {
+            this.filters.push(f);
+          }
+          if (!this.filters.includes(f)) {
+            this.filters.push(f);
+          }
         }
       }
     }

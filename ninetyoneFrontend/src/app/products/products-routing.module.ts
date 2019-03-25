@@ -37,6 +37,22 @@ const routes: Routes = [
   {
     path: 'bedroom/:id',
     component: SingleProductComponent
+  },
+  {
+    path: 'livingroom/:id',
+    component: SingleProductComponent
+  },
+  {
+    path: 'kitchen/:id',
+    component: SingleProductComponent
+  },
+  {
+    path: 'bathroom/:id',
+    component: SingleProductComponent
+  },
+  {
+    path: 'techs/:id',
+    component: SingleProductComponent
   }
 ];
 @NgModule({

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SingleProductService } from './single-product.service';
 import { Product } from 'src/app/Product';
-import { splitAtColon } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-single-product',
@@ -27,7 +26,6 @@ export class SingleProductComponent implements OnInit {
   }
 
   filtersToString() {
-    let leng: number; leng = this.filters.length;
     let f = [];
     for ( f of this.filters) {
           this.str += f + ', ';

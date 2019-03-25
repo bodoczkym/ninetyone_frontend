@@ -26,7 +26,7 @@
 }
 
 ::ng-deep .search .rate-search .ng5-slider {
-    width: 90%;
+    width: 100%;
 }
 
 ::ng-deep .search .ng5-slider .ng5-slider-selection {
@@ -51,10 +51,13 @@
   }
 
 .border {
+    width: 1%;
+    position: relative;
     border-left: 2px solid rgb(255, 98, 50);
 }
 
 .products {
+    width: 80%;
     position: relative;
     display: flex;
     flex-direction: row;
