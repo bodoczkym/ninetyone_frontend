@@ -14,11 +14,6 @@ export class AppComponent {
 
   navLinksConnect = [
     {
-      label: 'Contact info',
-      link: './connect/info',
-      index: 0
-    },
-    {
       label: 'Empty jobs',
       link: './connect/jobs',
       index: 1

@@ -1,77 +1,25 @@
-<!--<nav mat-tab-nav-bar class="mat-tab-nav-bar" mat-align-tabs="center">
-    <a mat-tab-link
-      class="mat-tab-link"
-       *ngFor="let link of navLinks"
-       [routerLink]="link.link"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      {{link.label}}
-    </a>
-  </nav>
-  <router-outlet></router-outlet> 
--->
-  
+<div class="main-container">
+  <div class="info-text">
+    <h1>Contact</h1>
+    <p class="sub-text">
+      <mat-icon>phone</mat-icon>06/30-24-34-542
+    </p>
+    <p class="sub-text">
+      szandi<mat-icon>alternate_email</mat-icon>asdsd.com
+    </p>
+  </div>
+  <!--https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+  and https://angular-maps.com/guides/getting-started/-->
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map:-->
+  <div class="container">
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div> 
+</div>
 
 
-<!--
-  <mat-tab-group (selectedTabChange)="f($event)">
-  <mat-tab  label="Contact info">
-    <ng-template matTabContent>
-      <p>adasdfsdf</p>
-    </ng-template>
-  </mat-tab>
 
-  <span class="spacer"></span>
-
-  <mat-tab label="Apply for job">
-    <ng-template matTabContent>
-      <p>to deliver</p>
-    </ng-template>
-  </mat-tab>
-
-  <span class="spacer"></span>
-
-  <mat-tab label="Our staff">
-    <ng-template matTabContent>
-      <p>delivered</p>
-    </ng-template>
-  </mat-tab>
-
-  <span class="spacer"></span>
-
-  <mat-tab label="Send note about the website">
-    <ng-template matTabContent>
-      <p>delivered</p>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
--->
-
-
-<!--
-<mat-tab-group (selectedTabChange)="f($event)" mat-align-tabs="center">
-  <mat-tab  label="Contact info">
-    <ng-template matTabContent>
-      <p>adasdfsdf</p>
-    </ng-template>
-  </mat-tab>
-
-  <mat-tab label="Apply for job">
-    <ng-template matTabContent>
-      <p>to deliver</p>
-    </ng-template>
-  </mat-tab>
-
-  <mat-tab label="Our staff">
-    <ng-template matTabContent>
-      <p>delivered</p>
-    </ng-template>
-  </mat-tab>
-
-  <mat-tab label="Send note about the website">
-    <ng-template matTabContent>
-      <p>delivered</p>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
--->
+<p>TODO: photo from the street
+</p>

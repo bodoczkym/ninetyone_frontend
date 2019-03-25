@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
       this.regUser.role = 'ROLE_USER';
       this.regUser.reference = '';
       this.regUser.description = '';
-      this.regUser.rate = 0;
+      this.regUser.rates = 0;
       this.regUser.img = '';
       this.regUser.email = '';
       this.regUser = await this.authService.register(this.regUser);

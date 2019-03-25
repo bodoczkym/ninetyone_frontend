@@ -17,7 +17,6 @@ import { MatListModule } from '@angular/material/list';
 
 import { StaffComponent } from './connection/staff/staff.component';
 import { JobsComponent } from './connection/jobs/jobs.component';
-import { InfoComponent } from './connection/info/info.component';
 import { NoteComponent } from './connection/note/note.component';
 import { MessageToStaffDialogComponent } from './connection/staff/message-to-staff-dialog/message-to-staff-dialog.component';
 import { RateComponent } from './connection/staff/rate/rate.component';
@@ -38,7 +37,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ConnectionComponent,
     StaffComponent,
     JobsComponent,
-    InfoComponent,
     NoteComponent,
     MessageToStaffDialogComponent,
     RateComponent
