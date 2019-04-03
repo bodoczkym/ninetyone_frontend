@@ -7,6 +7,7 @@ import { Options, LabelType } from 'ng5-slider';
 import { ProductFilterFilterPipe } from './../product-filter-filter.pipe';
 import { SingleProductService } from './../single-product/single-product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService2 } from './../../../auth.service';
 
 @Component({
   selector: 'app-living-room',
@@ -41,7 +42,8 @@ export class KitchenComponent implements OnInit {
               private kitchenService: KitchenService,
               private singleProductService: SingleProductService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService2) {
                }
 
   async ngOnInit() {

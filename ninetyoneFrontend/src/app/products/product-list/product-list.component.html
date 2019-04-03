@@ -22,14 +22,43 @@
     </div>
     <div class="border"> </div>
     <div *ngIf="router.url==='/products'" class="products">
+        <a [routerLink]="['/products', 'add']" mat-flat-button *ngIf="authService.isEmployee" class="buttons"
+            alt="Add product">
+            <mat-icon>add</mat-icon> Add new product
+        </a>
         <div *ngFor="let product of products" class="sub-products">
-            <div *ngFor="let pr of product | productFilter:searchTerm | priceFilter:value:highValue ">
+            <div *ngFor="let pr of product | productFilter:searchTerm | priceFilter:value:highValue">
                 <mat-card>
-                    <mat-card-header>
-                        <mat-card-title (click)="openSingleProductPage(pr)">{{ pr.name }}</mat-card-title>
-                        <mat-card-subtitle>{{ pr.price }} euro</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{pr.img}}" class="image" alt="BC">
+                    <button mat-button (click)="openSingleProductPage(pr)">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <p style="font-size:90%">
+                                    {{ pr.name }}
+                                </p>
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                <p style="font-size:85%">
+                                    {{ pr.price }} euro
+                                </p>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image src="{{pr.img}}" class="image" alt="BC">
+                    </button>
+                    <mat-card-actions class="mat-card-actions">
+                        <div>
+                            <a [routerLink]="['/products', 'modify']" (click)="openEdit(pr)" mat-flat-button
+                                class="buttons" alt="Edit product">
+                                <mat-icon style="width:5px;height:5px">edit</mat-icon>
+                            </a>
+                        </div>
+                        <div>
+                            <a [routerLink]="['/products', 'delete']" mat-flat-button class="buttons"
+                                alt="Delete product">
+                                <mat-icon style="width:5px;height:5px">delete</mat-icon>
+                            </a>
+                        </div>
+
+                    </mat-card-actions>
                 </mat-card>
             </div>
         </div>
@@ -39,11 +68,35 @@
     router.url==='/products/techs'">
         <div *ngFor="let product of products | productFilter:searchTerm | priceFilter:value:highValue ">
             <mat-card>
-                <mat-card-header>
-                    <mat-card-title (click)="openSingleProductPage(product)">{{ product.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ product.price }} euro</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="{{product.img}}" class="image" alt="BC">
+                <button mat-button (click)="openSingleProductPage(product)">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <p style="font-size:90%">
+                                {{ product.name }}
+                            </p>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <p style="font-size:85%">
+                                {{ product.price }} euro
+                            </p>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="{{product.img}}" class="image" alt="BC">
+                </button>
+                <mat-card-actions *ngIf="authService.isEmployee" class="mat-card-actions">
+                    <div>
+                        <a [routerLink]="['/products', 'modify']" (click)="edit(product)" mat-flat-button
+                            class="buttons" alt="Edit product">
+                            <mat-icon style="width:5px;height:5px">edit</mat-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a [routerLink]="['/products', 'delete']" mat-flat-button class="buttons" alt="Delete product">
+                            <mat-icon style="width:5px;height:5px">delete</mat-icon>
+                        </a>
+                    </div>
+
+                </mat-card-actions>
             </mat-card>
         </div>
     </div>

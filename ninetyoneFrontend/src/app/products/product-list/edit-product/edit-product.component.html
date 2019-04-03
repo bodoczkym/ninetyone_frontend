@@ -1,0 +1,54 @@
+<p>{{product.filt}}</p>
+
+<form [formGroup]="modifyForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field required>
+    <input formControlName="name" matInput type="text" maxlength="20" placeholder="{{product.name}}" required
+      pattern="^[A-Za-z0-9\s@]*" />
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+      Valid name is required!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field" required>
+    <input formControlName="stocknumber" matInput type="text" maxlength="20" placeholder="{{product.stocknumber}}" required
+      pattern="^[0-9]*$" />
+    <mat-error *ngIf="stocknumber.invalid && (stocknumber.dirty || stocknumber.touched) && stocknumber.errors.required">
+      Valid stocknumber is required!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-form-field" required>
+      <input formControlName="filt" matInput type="text" maxlength="20" placeholder="{{product.filters}}" required
+        pattern="^[A-Za-z\:@]*" />
+      <mat-error *ngIf="filt.invalid && (filt.dirty || filt.touched) && filt.errors.required">
+        Valid filter is required!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field" required>
+        <input formControlName="description" matInput type="text" maxlength="20" placeholder="{{product.description}}" required
+          pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$" />
+        <mat-error *ngIf="description.invalid && (description.dirty || description.touched) && description.errors.required">
+          Valid description is required!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mat-form-field" required>
+          <input formControlName="type" matInput type="text" maxlength="20" placeholder="{{ product.type }}" required
+            pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$" />
+          <mat-error *ngIf="type.invalid && (type.dirty || type.touched) && type.errors.required">
+            Valid type is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field" required>
+            <input formControlName="price" matInput type="text" maxlength="20" placeholder="{{product.price}}" required
+              pattern="^[0-9]*$" />
+            <mat-error *ngIf="price.invalid && (price.dirty || price.touched) && price.errors.required">
+              Valid price is required!
+            </mat-error>
+          </mat-form-field>
+
+  <button mat-raised-button class="send" type="submit" [disabled]="modifyForm.invalid"> Send </button>
+</form>

@@ -7,6 +7,8 @@ import { Options, LabelType } from 'ng5-slider';
 import { ProductFilterFilterPipe } from './product-filter-filter.pipe';
 import { SingleProductService } from './single-product/single-product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService2 } from './../../auth.service';
+import { EditProductService } from './../product-list/edit-product/edit-product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -49,7 +51,9 @@ export class ProductListComponent implements OnInit {
               private productListService: ProductListService,
               private singleProductService: SingleProductService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService2,
+              private editProductService: EditProductService) {
   }
 
   async ngOnInit() {
@@ -139,6 +143,10 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['/products/' + product.type + '/' + product.stocknumber]);
   }
 
+  openEdit(product: Product) {
+    this.editProductService.getUrl(product.type, product.stocknumber);
+    // route
+  }
 
   /*
     rate(): void {

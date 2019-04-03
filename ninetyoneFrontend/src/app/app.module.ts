@@ -20,6 +20,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -38,9 +39,10 @@ import { FormsModule } from '@angular/forms';
     // Routing
     AppRoutingModule,
     // Http
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,51 +8,105 @@ import { LivingRoomComponent } from './product-list/living-room/living-room.comp
 import { TechsComponent } from './product-list/techs/techs.component';
 import { BedroomComponent } from './product-list/bedroom/bedroom.component';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
+import { AuthGuard } from './../auth.guard';
+import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductListComponent
+    component: ProductListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'kitchen',
-    component: KitchenComponent
+    component: KitchenComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'bathroom',
-    component: BathroomComponent
+    component: BathroomComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'livingroom',
-    component: LivingRoomComponent
+    component: LivingRoomComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'techs',
-    component: TechsComponent
+    component: TechsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'bedroom',
-    component: BedroomComponent
+    component: BedroomComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'bedroom/:id',
-    component: SingleProductComponent
+    component: SingleProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'livingroom/:id',
-    component: SingleProductComponent
+    component: SingleProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'kitchen/:id',
-    component: SingleProductComponent
+    component: SingleProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'bathroom/:id',
-    component: SingleProductComponent
+    component: SingleProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   },
   {
     path: 'techs/:id',
-    component: SingleProductComponent
+    component: SingleProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
+  },
+  {
+    path: 'modify',
+    component: EditProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER']
+    }
   }
 ];
 @NgModule({

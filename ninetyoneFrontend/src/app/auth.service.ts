@@ -12,7 +12,7 @@ export const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService2 {
 
   isLoggedIn = false;
   isEmployee = false;
@@ -24,6 +24,7 @@ export class AuthService {
   constructor( private http: HttpClient ) { }
 
   async login(username: string, password: string): Promise<boolean> {
+    console.log('login: ' +  username + ' ' + password);
     const token = btoa(`${username}:${password}`);
     httpOptions.headers =
       httpOptions.headers.set(
@@ -31,16 +32,18 @@ export class AuthService {
         `Basic ${token}`
       );
     try {
+      console.log('login try');
       const user = await this.http.post<User>(
         `${this.usersUrl}/login`,
         {},
         httpOptions
       ).toPromise();
-
+      console.log('in try');
       this.isLoggedIn = true;
       this.user = user;
       if (user.role === 'ROLE_OWNER') {
         this.isEmployee = true;
+        console.log('He is an employee');
       }
       return Promise.resolve(true);
     } catch (e) {

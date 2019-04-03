@@ -1,44 +1,45 @@
 <div class="container">
-<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="form">
-  <div *ngIf="message">
-    {{ message }}
-  </div>
-  <mat-form-field>
-    <input matInput placeholder="Username" formControlName="loginUsername" required>
-    <mat-error *ngIf="loginUsername.invalid">Username is required</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Password" formControlName="loginPassword" required
-      [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
-    </mat-icon>
-    <mat-error *ngIf="loginPassword.invalid">Password is required</mat-error>
-  </mat-form-field>
+  <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="form">
+    <div *ngIf="loginMessage">
+      {{ loginMessage }}
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="loginUsername" required>
+      <mat-error *ngIf="loginUsername.invalid">Username is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="loginPassword" required
+        [type]="hidePassword0 ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hidePassword0 = !hidePassword0">{{hidePassword0 ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error *ngIf="loginPassword.invalid">Password is required</mat-error>
+    </mat-form-field>
     <button class="button" mat-flat-button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button>
-</form>
+  </form>
 
-<form [formGroup]="registerForm" (ngSubmit)="onRegsiterSubmit()" class="form">
-  <div *ngIf="message">
-    {{ message }}
-  </div>
-  <mat-form-field>
-    <input matInput placeholder="Username" formControlName="registerUsername" required>
-    <mat-error *ngIf="registerUsername.invalid">Username required!</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Password" formControlName="registerPassword" required
-      [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
-    </mat-icon>
-    <mat-error *ngIf="registerPassword.invalid">Password required!</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Password again" formControlName="registerPasswordagain" required
-      [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
-    </mat-icon>
-    <mat-error *ngIf="registerPasswordagain.invalid">Password required!</mat-error>
-  </mat-form-field>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegsiterSubmit()" class="form">
+    <div *ngIf="message">
+      {{ message }}
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="registerUsername" required>
+      <mat-error *ngIf="registerUsername.invalid">Username required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="registerPassword" required
+        [type]="hidePassword1 ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hidePassword1 = !hidePassword1">{{hidePassword1 ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error *ngIf="registerPassword.invalid">Password required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password again" formControlName="registerPasswordagain" required
+        [type]="hidePassword2 ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hidePassword2 = !hidePassword2">{{hidePassword2 ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error *ngIf="registerPasswordagain.invalid">Password required!</mat-error>
+    </mat-form-field>
     <button class="button" mat-flat-button type="submit" [disabled]="registerForm.invalid">Register</button>
-</form>
+  </form>
 </div>
+

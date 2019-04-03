@@ -19,6 +19,7 @@ export class ProductListService {
     private http: HttpClient
   ) { }
 
+
   getBedProduct(id: number): Promise<Product> {
     return this.http.get<Product>(`${this.bedProductUrl}/${id}`).toPromise();
   }
@@ -77,7 +78,6 @@ export class ProductListService {
       httpOptions
     ).toPromise();
   }
-
 
 
 }

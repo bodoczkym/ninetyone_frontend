@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService2 } from './auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  selectedVal: string;
+  responseMessage = '';
+  responseMessageType = '';
+  emailInput: string;
+  passwordInput: string;
+  isForgotPassword: boolean;
+  userDetails: any;
+
   title = '91';
   constructor(public router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService2
+  ) {  }
+
 
   navLinksConnect = [
     {
@@ -56,6 +67,9 @@ export class AppComponent {
       index: 3
     }
   ];
+
+  ngOnInit() {
+  }
 
   logout() {
     this.authService.logout();

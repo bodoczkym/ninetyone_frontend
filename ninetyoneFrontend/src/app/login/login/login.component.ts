@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../auth.service';
+import { AuthService2 } from '../../auth.service';
 import { Router } from '@angular/router';
 import { User } from './../../User';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,10 @@ import { User } from './../../User';
 export class LoginComponent implements OnInit {
 
   message: string;
-  hidePassword = true;
+  loginMessage: string;
+  hidePassword0 = true;
+  hidePassword1 = true;
+  hidePassword2 = true;
   goodpw: boolean;
   regUser: User;
 
@@ -36,11 +40,9 @@ export class LoginComponent implements OnInit {
   get registerPassword() { return this.registerForm.get('registerPassword'); }
   get registerPasswordagain() { return this.registerForm.get('registerPasswordagain'); }
 
-
-
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthService2,
     private router: Router
   ) { }
 
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
         : '/profile';
       this.router.navigate([url]);
     } else {
-      this.message = 'Cannot log in.';
+      this.loginMessage = 'Cannot log in.';
     }
 
   }
@@ -75,20 +77,37 @@ export class LoginComponent implements OnInit {
       this.regUser.reference = '';
       this.regUser.description = '';
       this.regUser.rates = 0;
+      this.regUser.voters = 0;
       this.regUser.img = '';
       this.regUser.email = '';
       this.regUser = await this.authService.register(this.regUser);
+      const success = await this.authService.login(
+        this.regUser.username,
+        this.regUser.password
+      );
+      if (success && this.regUser != null) {
+        const url = this.authService.redirectUrl
+          ? this.authService.redirectUrl
+          : '/profile';
+        this.router.navigate([url]);
+      } else {
+        this.message = 'Error in registration!';
+      }
     } else {
       this.message = 'Wrong password!';
     }
 
-    if (this.regUser != null) {
-      const url = this.authService.redirectUrl
-        ? this.authService.redirectUrl
-        : '/profile';
-      this.router.navigate([url]);
-    } else {
-      this.message = 'Error in registration!';
-    }
+    /* if (this.regUser != null) {
+       const url = this.authService.redirectUrl
+         ? this.authService.redirectUrl
+         : '/profile';
+       this.router.navigate([url]);
+     } else {
+       this.message = 'Error in registration!';
+     }*/
   }
+
+
 }
+
+
