@@ -138,13 +138,13 @@ export class ProductListComponent implements OnInit {
   }
 
   openSingleProductPage(product: Product) {
-    this.singleProductService.getUrl(product.type, product.stocknumber);
+    this.singleProductService.getUrl(product.type, product.id);
     // route
-    this.router.navigate(['/products/' + product.type + '/' + product.stocknumber]);
+    this.router.navigate(['/products/' + product.type + '/' + product.id]);
   }
 
   openEdit(product: Product) {
-    this.editProductService.getUrl(product.type, product.stocknumber);
+    this.editProductService.getUrl(product.type, product.id);
     // route
   }
 

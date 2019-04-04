@@ -15,14 +15,13 @@ export class EditProductService {
       private http: HttpClient
   ) { }
 
-  getUrl(type: string, stockNumber: number) {
+  getUrl(type: string, id: number) {
     console.log(type);
     if (type === 'livingroom') {
-      this.productUrl = 'http://localhost:8080/living-room/' + stockNumber;
+      this.productUrl = 'http://localhost:8080/living-room/' + id;
     } else {
-      this.productUrl = 'http://localhost:8080/' + type + '/' + stockNumber;
+      this.productUrl = 'http://localhost:8080/' + type + '/' + id;
     }
-
   }
 
   getProduct(): Promise<Product> {return this.http.get<Product>(`${this.productUrl}`).toPromise();

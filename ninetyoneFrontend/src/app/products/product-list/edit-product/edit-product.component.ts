@@ -36,8 +36,6 @@ export class EditProductComponent implements OnInit, OnChanges {
 
   async ngOnInit() {
     this.product = await this.editProductService.getProduct();
-    console.log(this.product);
-    this.splitFilters(this.product);
   }
 
   ngOnChanges() {
@@ -45,22 +43,20 @@ export class EditProductComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    this.editProductService.modify(Object.assign(new Product(), this.modifyForm.value));
-  }
-
-
-  splitFilters(prod: Product) {
-    console.log(prod.filters);
-    this.filters = prod.filters.split(':');
-    this.filtersToString();
-  }
-
-  filtersToString() {
-    let f = [];
-    for ( f of this.filters) {
-      this.str += f + ', ';
-    }
-    this. str = this.str.slice(0, this.str.length - 2);
+    const test = {
+      id: this.product.id,
+      name: this.modifyForm.value.name,
+      stocknumber: this.modifyForm.value.stocknumber,
+      filters: this.product.filters,
+      description: this.modifyForm.value.description,
+      rate: this.product.rate,
+      type: this.modifyForm.value.type,
+      img: this.product.img,
+      price: this.modifyForm.value.price,
+      createdAt: this.product.createdAt
+    };
+    console.log(test);
+    this.editProductService.modify(Object.assign(new Product(), test));
   }
 
 }
