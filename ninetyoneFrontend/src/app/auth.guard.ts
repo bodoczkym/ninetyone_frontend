@@ -23,34 +23,34 @@ export class AuthGuard implements CanActivate {
             }
             if (next.data && next.data.roles) {
                 if (next.data.roles.includes(this.authService.user.role)) {
-                    if (next.url.join('').includes('living')) {
+                   /* if (next.url.join('').includes('living')) {
                         console.log('"Van joga megnezni."');
-                    }
-                    console.log('1');
+                    }*/
+                    console.log('Van joga megnézni.1');
                     return true;
                 } else {
-                    if (next.url.join('').includes('profile')) {
+                    /*if (next.url.join('').includes('profile')) {
                         console.log('"Nincs joga megnezni."');
-                    }
-                    console.log('2');
+                    }*/
+                    console.log('Nincs joga megnézni.2');
                     return false;
                 }
             } else {
-                if (next.url.join('').includes('profile')) {
+                /*if (next.url.join('').includes('profile')) {
                     console.log('"Nincs benne a next.data && next.data.roles-ban."');
-                }
-                console.log('3');
+                }*/
+                console.log('Nincs benne a rolesokban.3');
                 return true;
             }
         } else {
             if (next.data && next.data.roles) {
-                if (next.data.roles.includes('ROLE_USER')) {
-                    console.log('4');
+                if (next.data.roles.includes('GUEST')) {
+                    console.log('He is a guest.4');
                     return true;
                 }
-                console.log('5');
+                console.log('Nincs joga megnézni.5');
             }
-            console.log('6');
+            console.log('Nincs benne a rolesokban.6');
         }
         console.log(state.url);
         this.authService.redirectUrl = '/products';

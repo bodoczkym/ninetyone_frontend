@@ -7,7 +7,6 @@ import {
   RatingChangeEvent
 } from '../../../../../../node_modules/angular-star-rating';
 import { StaffService } from './../staff.service';
-
 import { User } from './../../../../User';
 
 enum COLORS {

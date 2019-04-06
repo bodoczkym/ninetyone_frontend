@@ -14,7 +14,7 @@
           <mat-card-content class="content">
             <p>{{ user.description }}</p>
           </mat-card-content>
-          <mat-card-actions>
+          <mat-card-actions *ngIf="authService.isLoggedIn">
             <button mat-button *ngIf="user.rates!==0" (click)=rate(user) type="number">RATE {{ user.rates / user.voters | number:0 }}</button>
             <button mat-button *ngIf="user.rates===0" (click)=rate(user)>RATE</button>
             <button mat-button (click)=message(user.email)>

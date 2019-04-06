@@ -35,12 +35,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
+import { DeleteComponent } from './product-list/delete/delete.component';
 
 
 @NgModule({
   declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,
      KitchenComponent, LivingRoomComponent, BedroomComponent, BathroomComponent, TechsComponent, SingleProductComponent,
-     EditProductComponent],
+     EditProductComponent,
+     DeleteComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
@@ -59,6 +61,9 @@ import { EditProductComponent } from './product-list/edit-product/edit-product.c
     MatTabsModule,
     MatExpansionModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    DeleteComponent
   ]
 })
 export class ProductsModule { }

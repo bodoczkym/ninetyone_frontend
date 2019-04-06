@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ForumService } from './forum.service';
 import { Question } from './../../Question';
 import { Comment } from './../../Comment';
-
+import { AuthService2 } from './../../auth.service';
 
 
 @Component({
@@ -38,7 +38,8 @@ export class ForumListComponent implements OnInit, OnChanges {
 
 
   constructor(private fb: FormBuilder,
-              private forumService: ForumService) { }
+              private forumService: ForumService,
+              private authService: AuthService2) { }
 
 
   async ngOnInit() {

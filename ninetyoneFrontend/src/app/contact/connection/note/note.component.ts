@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { NoteService } from '../note/note.service';
 import { Note } from './../../../Note';
+import { AuthService2 } from './../../../auth.service';
 
 @Component({
   selector: 'app-note',
@@ -25,7 +26,8 @@ export class NoteComponent implements OnInit, OnChanges {
   get text() { return this.noteForm.get('text'); }
 
   constructor(private fb: FormBuilder,
-              private noteService: NoteService) { }
+              private noteService: NoteService,
+              private authService: AuthService2) { }
 
   async ngOnInit() {
     this.notes = await this.noteService.getNotes();

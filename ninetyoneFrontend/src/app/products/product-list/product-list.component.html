@@ -22,7 +22,7 @@
     </div>
     <div class="border"> </div>
     <div *ngIf="router.url==='/products'" class="products">
-        <a [routerLink]="['/products', 'add']" mat-flat-button *ngIf="authService.isEmployee" class="buttons"
+        <a [routerLink]="['/products', 'add']" mat-flat-button *ngIf="authService.isEmployee" class="add-new-product"
             alt="Add product">
             <mat-icon>add</mat-icon> Add new product
         </a>
@@ -44,7 +44,7 @@
                         </mat-card-header>
                         <img mat-card-image src="{{pr.img}}" class="image" alt="BC">
                     </button>
-                    <mat-card-actions class="mat-card-actions">
+                    <mat-card-actions class="mat-card-actions" *ngIf="authService.isEmployee">
                         <div>
                             <a [routerLink]="['/products', 'modify']" (click)="openEdit(pr)" mat-flat-button
                                 class="buttons" alt="Edit product">
@@ -52,7 +52,7 @@
                             </a>
                         </div>
                         <div>
-                            <a [routerLink]="['/products', 'delete']" mat-flat-button class="buttons"
+                            <a (click)="delete(pr)" mat-flat-button class="buttons"
                                 alt="Delete product">
                                 <mat-icon style="width:5px;height:5px">delete</mat-icon>
                             </a>

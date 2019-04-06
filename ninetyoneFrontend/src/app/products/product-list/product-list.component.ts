@@ -9,6 +9,8 @@ import { SingleProductService } from './single-product/single-product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService2 } from './../../auth.service';
 import { EditProductService } from './../product-list/edit-product/edit-product.service';
+import { DeleteComponent } from './delete/delete.component';
+import { DeleteService } from './delete/delete.service';
 
 @Component({
   selector: 'app-product-list',
@@ -53,7 +55,8 @@ export class ProductListComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private authService: AuthService2,
-              private editProductService: EditProductService) {
+              private editProductService: EditProductService,
+              private deleteService: DeleteService) {
   }
 
   async ngOnInit() {
@@ -146,6 +149,17 @@ export class ProductListComponent implements OnInit {
   openEdit(product: Product) {
     this.editProductService.getUrl(product.type, product.id);
     // route
+  }
+
+  delete(pr: Product): void {
+    this.deleteService.getUrl(pr.type, pr.id);
+    const dialogRef2 = this.dialog.open(DeleteComponent, {
+
+    });
+    console.log(pr);
+    dialogRef2.afterClosed().subscribe(result => {
+      console.log('The delete dialog was closed');
+    });
   }
 
   /*

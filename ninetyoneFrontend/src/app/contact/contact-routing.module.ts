@@ -4,23 +4,40 @@ import { ConnectionComponent } from './connection/connection.component';
 import { StaffComponent } from './connection/staff/staff.component';
 import { NoteComponent } from './connection/note/note.component';
 import { JobsComponent } from './connection/jobs/jobs.component';
+import { AuthGuard } from './../auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConnectionComponent
+    component: ConnectionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+    }
   },
   {
     path: 'staff',
-    component: StaffComponent
+    component: StaffComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+    }
   },
   {
     path: 'note',
-    component: NoteComponent
+    component: NoteComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+    }
   },
   {
     path: 'jobs',
-    component: JobsComponent
+    component: JobsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+    }
   }
 ];
 

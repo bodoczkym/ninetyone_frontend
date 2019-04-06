@@ -12,7 +12,7 @@
 <p>TODO: make this page beautiful
 </p>
 
-<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+<form *ngIf="authService.isLoggedIn" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="mat-form-field" required>
     <input formControlName="name" matInput type="text" maxlength="20" placeholder="Name" required pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$"/>
     <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
@@ -25,13 +25,14 @@
     <mat-hint>{{note.value.length}} / 300</mat-hint>
   </mat-form-field>
   <button mat-raised-button class="send" type="submit" [disabled]="noteForm.invalid"> Send </button>
-</form>
-{{noteForm.value | json}}
+  {{noteForm.value | json}}
 {{noteForm.get('name').value}}
 {{noteForm.get('text').value}}
 {{noteForm.get('name').errors | json}}
+</form>
 
 
+<p *ngIf="!authService.isLoggedIn"> Please log in to send note!</p>
 
 <div class="container">
   <div *ngFor="let note of notes">

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService2 } from './../../../auth.service';
 
 @Component({
-  selector: 'app-living-room',
+  selector: 'app-techs',
   templateUrl: './../product-list.component.html',
   styleUrls: ['./../product-list.component.css']
 })

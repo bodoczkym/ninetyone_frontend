@@ -1,6 +1,7 @@
 <p> TODO: maybe make pop-up for the question form</p>
 
-<form [formGroup]="forumForm" (ngSubmit)="onSubmit()">
+<p *ngIf="!authService.isLoggedIn"> Please log in to ask a question!</p>
+<form *ngIf="authService.isLoggedIn" [formGroup]="forumForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="mat-form-field" required>
     <input formControlName="name" matInput type="text" maxlength="20" placeholder="Name" required
       pattern="^[A-ZÁÉŐÓÚŰÜÖÍa-záéőóúűüöí]{1,}(\s[A-ZÁÉŐÓÚŰÜÖÍsa-záéőóúűüöí]{1,}){0,}$" />
@@ -47,7 +48,7 @@
         </div>
       </div>
 
-      <form [formGroup]="commentForm" (ngSubmit)="sendComment(i+1)" >
+      <form *ngIf="authService.isLoggedIn" [formGroup]="commentForm" (ngSubmit)="sendComment(i+1)" >
         <mat-form-field  class="comment-field">
           <input matInput formControlName="commentName" placeholder="Name">
         </mat-form-field>

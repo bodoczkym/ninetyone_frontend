@@ -102,3 +102,8 @@ mat-card-header {
     padding-bottom:5px;
     margin:0;
 }
+
+.add-new-product {
+    width: 200px;
+    height: 40px;
+}

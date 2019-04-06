@@ -10,33 +10,60 @@ const routes: Routes = [
     },
     {
         path: 'orders',
-        loadChildren: './orders/orders.module#OrdersModule'
+        loadChildren: './orders/orders.module#OrdersModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_USER']
+        }
     },
     {
         path: 'products',
-        loadChildren: './products/products.module#ProductsModule'
+        loadChildren: './products/products.module#ProductsModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+        }
     },
     {
         path: 'login',
         loadChildren: './login/login.module#LoginModule',
-        /*canActivate: [AuthGuard]*/
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+        }
     },
     {
         path: 'profile',
-        loadChildren: './profile/profile.module#ProfileModule'
+        loadChildren: './profile/profile.module#ProfileModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER']
+        }
     },
     {
         path: 'forum',
-        loadChildren: './forum/forum.module#ForumModule'
+        loadChildren: './forum/forum.module#ForumModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+        }
     },
     {
         path: 'connect',
-        loadChildren: './contact/contact.module#ContactModule'
+        loadChildren: './contact/contact.module#ContactModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+        }
     },
     {
         path: '',
         redirectTo: '',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
+        }
     }
 ];
 

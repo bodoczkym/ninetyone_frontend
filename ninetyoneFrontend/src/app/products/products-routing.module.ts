@@ -17,7 +17,7 @@ const routes: Routes = [
     component: ProductListComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
     component: KitchenComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -33,7 +33,7 @@ const routes: Routes = [
     component: BathroomComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
     component: LivingRoomComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
     component: TechsComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
     component: BedroomComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -65,7 +65,7 @@ const routes: Routes = [
     component: SingleProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -73,7 +73,7 @@ const routes: Routes = [
     component: SingleProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -81,7 +81,7 @@ const routes: Routes = [
     component: SingleProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -89,7 +89,7 @@ const routes: Routes = [
     component: SingleProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -97,7 +97,7 @@ const routes: Routes = [
     component: SingleProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER', 'ROLE_USER', 'GUEST']
     }
   },
   {
@@ -105,7 +105,7 @@ const routes: Routes = [
     component: EditProductComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_OWNER', 'ROLE_USER']
+      roles: ['ROLE_OWNER']
     }
   }
 ];
