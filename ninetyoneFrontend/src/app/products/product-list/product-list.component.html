@@ -61,7 +61,7 @@
                             </a>
                         </div>                        
                     </mat-card-actions>
-                    <button mat-button (click)=addToCart(pr)>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
+                    <button mat-button *ngIf="authService.isLoggedIn" (click)=addToCart(pr)>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
                 </mat-card>
 
             </div>

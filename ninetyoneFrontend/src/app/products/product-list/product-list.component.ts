@@ -168,7 +168,7 @@ export class ProductListComponent implements OnInit {
 
 
   addToCart(pr: Product) {
-    this.cartComponent.addProduct(pr);
+    this.cartComponent.addProductToCart(pr);
   }
   /*
     rate(): void {

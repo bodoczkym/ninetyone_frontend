@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 import { DeleteComponent } from './cart/delete/delete.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DeleteComponent } from './cart/delete/delete.component';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatListModule,
     MatProgressSpinnerModule,
     MatIconModule
   ],

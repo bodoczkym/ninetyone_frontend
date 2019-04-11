@@ -6,10 +6,10 @@
 
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="Product name">
-          <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
-          <mat-cell *matCellDef="let tableElements"> {{ tableElements.productName }} </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="Product name">
+      <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+      <mat-cell *matCellDef="let tableElements"> {{ tableElements.productName }} </mat-cell>
+    </ng-container>
 
     <!-- productType Column -->
     <ng-container matColumnDef="Type">
@@ -24,26 +24,31 @@
     </ng-container>
 
     <ng-container matColumnDef="Price">
-        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-        <mat-cell *matCellDef="let tableElements"> {{ tableElements.price }} Forint </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let tableElements"> {{ tableElements.price }} Forint </mat-cell>
+    </ng-container>
 
-<ng-container matColumnDef="Modify">
-    <mat-header-cell *matHeaderCellDef>   Modify   </mat-header-cell>
-    <mat-cell *matCellDef="let tableElements"> 
-      <button mat-button>
+    <ng-container matColumnDef="Modify">
+      <mat-header-cell *matHeaderCellDef> Modify </mat-header-cell>
+      <mat-cell *matCellDef="let tableElements">
+        <button mat-button>
           <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-button (click)=delete(tableElements.purchaseId,tableElements.productId,tableElements.productType)>
+        </button>
+        <button mat-button (click)=delete(tableElements.purchaseId,tableElements.productId,tableElements.productType)>
           <mat-icon>delete</mat-icon>
-      </button>
-      
-    </mat-cell>
-  </ng-container>
+        </button>
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <mat-paginator class="mat-elevation-z8" [pageSize]="1" [pageSizeOptions]="[1, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-selection-list class="summary">
+    <mat-list-item>
+      <div class="text1">Summary: </div>
+       <div class="text2">{{sum}} <button mat-button>Pay</button></div>
+    </mat-list-item>
+  </mat-selection-list>
+  
 </div>

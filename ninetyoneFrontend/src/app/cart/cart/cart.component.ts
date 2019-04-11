@@ -3,10 +3,7 @@ import { Product } from './../../Product';
 import { AuthService2 } from './../../auth.service';
 import { CartService } from './cart.service';
 import { Purchase } from 'src/app/Purchase';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
-import { DataSource } from './../../DataSource';
-import { getMatScrollStrategyAlreadyAttachedError } from '@angular/cdk/overlay/typings/scroll/scroll-strategy';
 import { DeleteComponent } from './delete/delete.component';
 import { DeleteService } from './delete/delete.service';
 
@@ -34,14 +31,9 @@ export class CartComponent implements OnInit, OnChanges {
   dataSource: any[] = [];
   displayedColumns: string[] = ['Product name', 'Type', 'Created at', 'Price', 'Modify'];
   isLoading = true;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  bedProducts: Product[] = [];
-  techsProducts: Product[] = [];
-  bathProducts: Product[] = [];
-  livingProducts: Product[] = [];
-  kitchenProducts: Product[] = [];
   ar: any[] = [];
   tableElements: Table[] = [];
+  sum = 0;
 
   constructor(public dialog: MatDialog,
               private cartService: CartService,
@@ -49,7 +41,7 @@ export class CartComponent implements OnInit, OnChanges {
               private deleteService: DeleteService) { }
 
   async ngOnInit() {
-    console.log('User: ' + this.user.id);
+    console.log('User id: ' + this.user.id);
     // get purchases
     let z;
     this.helper = await this.cartService.getPurchases(this.user.id);
@@ -58,26 +50,61 @@ export class CartComponent implements OnInit, OnChanges {
         this.purchases.push(this.helper[z]);
       }
     }
-
-    // get given products
+    // get products of purchases
     for (z in this.purchases) {
       if (true) {
         await this.getProducts(this.purchases[z].productId, this.purchases[z].productType);
       }
     }
+    // helper method
+    this.toArray();
+    // get tableElements for dataSource for table in the html
+    this.getTableElements();
+    this.dataSource = this.tableElements;
+    this.getSummary();
+    this.isLoading = false;
+    console.log(this.dataSource);
+  }
 
-    this.getArray();
+  ngOnChanges() { }
 
-    let x;
-    for (x in this.ar) {
+  addProductToCart(pr: Product) {
+    console.log(pr);
+    this.products.push(pr);
+  }
+
+  async getProducts(id: number, type: string) {
+    if (type === 'bedroom') {
+      this.products.push(await this.cartService.getBedProduct(id));
+      return await this.cartService.getBedProduct(id);
+    } else if (type === 'bathroom') {
+      this.products.push(await this.cartService.getBathProduct(id));
+      return await this.cartService.getBathProduct(id);
+    } else if (type === 'kitchen') {
+      this.products.push(await this.cartService.getKitchenProduct(id));
+      return await this.cartService.getKitchenProduct(id);
+    } else if (type === 'livingroom') {
+      this.products.push(await this.cartService.getLivingPRoduct(id));
+      return await this.cartService.getLivingPRoduct(id);
+    } else if (type === 'techs') {
+      this.products.push(await this.cartService.getTechsProduct(id));
+      return await this.cartService.getTechsProduct(id);
+    }
+  }
+
+  toArray() {
+    let z;
+    for (z in this.purchases) {
       if (true) {
-        console.log('Array: ' + this.ar);
-
+       this.ar[z] = [this.purchases[z].id, this.purchases[z].productId, this.purchases[z].productType,
+        this.purchases[z].user, this.purchases[z].createdAt, this.purchases[z].updatedAt, this.products[z].name,
+        this.products[z].price];
       }
     }
+  }
 
-    this.isLoading = false;
-
+  getTableElements() {
+    let z;
     for (z in this.ar) {
       if (true) {
         this.tableElements[z] = this.ar[z];
@@ -91,77 +118,7 @@ export class CartComponent implements OnInit, OnChanges {
         this.tableElements[z].price = this.ar[z][7];
       }
     }
-
-    this.dataSource = this.tableElements;
-    console.log(this.dataSource);
   }
-
-  /*AfterViewInit() {
-    this.paginator.page
-        .pipe(
-            tap(() => this.loadLessonsPage())
-        )
-        .subscribe();
-}
-
-loadLessonsPage() {
-    this.dataSource.loadLessons(
-        this.course.id,
-        '',
-        'asc',
-        this.paginator.pageIndex,
-        this.paginator.pageSize);
-}*/
-
-  ngOnChanges() {
-
-  }
-
-  addProduct(pr: Product) {
-    console.log(pr);
-    this.products.push(pr);
-  }
-
-  async getProducts(id: number, type: string) {
-    if (type === 'bedroom') {
-      // this.bedProducts.push(await this.cartService.getBedProduct(id));
-      this.products.push(await this.cartService.getBedProduct(id));
-      return await this.cartService.getBedProduct(id);
-      // console.log(this.bedProducts);
-    } else if (type === 'bathroom') {
-      // this.bathProducts.push(await this.cartService.getBathProduct(id));
-      this.products.push(await this.cartService.getBathProduct(id));
-      return await this.cartService.getBathProduct(id);
-      // console.log(this.bathProducts);
-    } else if (type === 'kitchen') {
-      // this.kitchenProducts.push(await this.cartService.getKitchenProduct(id));
-      this.products.push(await this.cartService.getKitchenProduct(id));
-      return await this.cartService.getKitchenProduct(id);
-      // console.log(this.kitchenProducts);
-    } else if (type === 'livingroom') {
-      // this.livingProducts.push(await this.cartService.getLivingPRoduct(id));
-      this.products.push(await this.cartService.getLivingPRoduct(id));
-      return await this.cartService.getLivingPRoduct(id);
-      // console.log(this.livingProducts);
-    } else if (type === 'techs') {
-      // this.techsProducts.push(await this.cartService.getTechsProduct(id));
-      this.products.push(await this.cartService.getTechsProduct(id));
-      return await this.cartService.getTechsProduct(id);
-      // console.log(this.techsProducts);
-    }
-  }
-
-  getArray() {
-    let z;
-    for (z in this.purchases) {
-      if (true) {
-       this.ar[z] = [this.purchases[z].id, this.purchases[z].productId, this.purchases[z].productType,
-        this.purchases[z].user, this.purchases[z].createdAt, this.purchases[z].updatedAt, this.products[z].name,
-        this.products[z].price];
-      }
-    }
-  }
-
 
   delete(purchaseId: number, productId: number, productType: string): void {
     this.deleteService.getDatas(purchaseId, productId, productType);
@@ -176,6 +133,15 @@ loadLessonsPage() {
     dialogRef2.afterClosed().subscribe(result => {
       console.log('The delete dialog was closed');
     });
+  }
+
+  getSummary() {
+    let z;
+    for (z in this.products) {
+      if (true) {
+       this.sum += this.products[z].price;
+      }
+    }
   }
 
 }

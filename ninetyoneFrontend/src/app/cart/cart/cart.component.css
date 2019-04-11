@@ -5,3 +5,19 @@ table {
 .mat-elevation-z8 {
     width: 100%;
 }
+
+.summary {
+    background-color: rgb(252, 122, 71);
+}
+
+.summary .text1 {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+}
+
+.summary .text2 {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+}
