@@ -21,6 +21,10 @@
 
     </div>
     <div class="border"> </div>
+    <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
     <div *ngIf="router.url==='/products'" class="products">
         <a [routerLink]="['/products', 'add']" mat-flat-button *ngIf="authService.isEmployee" class="add-new-product"
             alt="Add product">
@@ -52,14 +56,14 @@
                             </a>
                         </div>
                         <div>
-                            <a (click)="delete(pr)" mat-flat-button class="buttons"
-                                alt="Delete product">
+                            <a (click)="delete(pr)" mat-flat-button class="buttons" alt="Delete product">
                                 <mat-icon style="width:5px;height:5px">delete</mat-icon>
                             </a>
-                        </div>
-
+                        </div>                        
                     </mat-card-actions>
+                    <button mat-button (click)=addToCart(pr)>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
                 </mat-card>
+
             </div>
         </div>
     </div>

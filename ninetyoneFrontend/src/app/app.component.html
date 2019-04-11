@@ -7,7 +7,7 @@
     <button mat-button *ngIf="authService.isLoggedIn" routerLink="/profile">
       <mat-icon> insert_emoticon</mat-icon> Profile
     </button>
-    <button mat-button *ngIf="authService.isLoggedIn" routerLink="/profile">
+    <button mat-button *ngIf="authService.isLoggedIn" routerLink="/cart">
       <mat-icon> local_grocery_store</mat-icon> Cart
     </button>
     <button mat-button *ngIf="authService.isLoggedIn" (click)="logout()">

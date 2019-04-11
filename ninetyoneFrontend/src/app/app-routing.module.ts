@@ -41,6 +41,14 @@ const routes: Routes = [
         }
     },
     {
+        path: 'cart',
+        loadChildren: './cart/cart.module#CartModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'ROLE_USER']
+        }
+    },
+    {
         path: 'forum',
         loadChildren: './forum/forum.module#ForumModule',
         canActivate: [AuthGuard],

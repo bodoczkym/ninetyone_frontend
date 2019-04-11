@@ -44,6 +44,7 @@
     "firebase": "^5.9.1",
     "ionic-angular": "^3.9.4",
     "ionic3-star-rating": "^1.1.5",
+    "json2typescript": "^1.2.0",
     "modal-service": "^1.0.1",
     "ng2-bar-rating": "^1.1.50",
     "ng2-nouislider": "^1.7.13",

@@ -1,0 +1,49 @@
+<div>
+  <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="Product name">
+          <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+          <mat-cell *matCellDef="let tableElements"> {{ tableElements.productName }} </mat-cell>
+        </ng-container>
+
+    <!-- productType Column -->
+    <ng-container matColumnDef="Type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let tableElements"> {{ tableElements.productType}} </mat-cell>
+    </ng-container>
+
+    <!-- createdAt Column -->
+    <ng-container matColumnDef="Created at">
+      <mat-header-cell *matHeaderCellDef> Added to cart at </mat-header-cell>
+      <mat-cell *matCellDef="let tableElements"> {{ tableElements.createdAt | date:'MMM d, y HH:mm:ss' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let tableElements"> {{ tableElements.price }} Forint </mat-cell>
+      </ng-container>
+
+<ng-container matColumnDef="Modify">
+    <mat-header-cell *matHeaderCellDef>   Modify   </mat-header-cell>
+    <mat-cell *matCellDef="let dataSource"> 
+      <button mat-button>
+          <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button>
+          <mat-icon>delete</mat-icon>
+      </button>
+      
+    </mat-cell>
+  </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator class="mat-elevation-z8" [pageSize]="1" [pageSizeOptions]="[1, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

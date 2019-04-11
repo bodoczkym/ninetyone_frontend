@@ -11,6 +11,7 @@ import { AuthService2 } from './../../auth.service';
 import { EditProductService } from './../product-list/edit-product/edit-product.service';
 import { DeleteComponent } from './delete/delete.component';
 import { DeleteService } from './delete/delete.service';
+import { CartComponent } from './../../cart/cart/cart.component';
 
 @Component({
   selector: 'app-product-list',
@@ -33,6 +34,7 @@ export class ProductListComponent implements OnInit {
   techsProducts: Product[];
 
   searchTerm: string;
+  isLoading = true;
 
   value: number;
   highValue: number;
@@ -56,7 +58,8 @@ export class ProductListComponent implements OnInit {
               private router: Router,
               private authService: AuthService2,
               private editProductService: EditProductService,
-              private deleteService: DeleteService) {
+              private deleteService: DeleteService,
+              private cartComponent: CartComponent) {
   }
 
   async ngOnInit() {
@@ -71,6 +74,7 @@ export class ProductListComponent implements OnInit {
     this.products.push(this.bathProducts);
     this.techsProducts = await this.productListService.getTechsProducts();
     this.products.push(this.techsProducts);
+    this.isLoading = false;
     console.log(this.products);
     // get filters to checkbox
     this.splitAndStore(this.products);
@@ -162,6 +166,10 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+
+  addToCart(pr: Product) {
+    this.cartComponent.addProduct(pr);
+  }
   /*
     rate(): void {
       const dialogRef2 = this.dialog.open(RateComponent, {

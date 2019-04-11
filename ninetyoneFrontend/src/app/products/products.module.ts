@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatProgressSpinnerModule } from '@angular/material';
 
 // Components
 import { KitchenComponent } from './product-list/kitchen/kitchen.component';
@@ -36,13 +36,12 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 import { DeleteComponent } from './product-list/delete/delete.component';
-
+import { CartComponent } from './../cart/cart/cart.component';
 
 @NgModule({
   declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,
      KitchenComponent, LivingRoomComponent, BedroomComponent, BathroomComponent, TechsComponent, SingleProductComponent,
-     EditProductComponent,
-     DeleteComponent],
+     EditProductComponent, DeleteComponent ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
@@ -50,6 +49,7 @@ import { DeleteComponent } from './product-list/delete/delete.component';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     MatListModule,
     MatInputModule,
     MatFormFieldModule,
@@ -64,6 +64,7 @@ import { DeleteComponent } from './product-list/delete/delete.component';
   ],
   entryComponents: [
     DeleteComponent
-  ]
+  ],
+  providers: [ CartComponent ]
 })
 export class ProductsModule { }

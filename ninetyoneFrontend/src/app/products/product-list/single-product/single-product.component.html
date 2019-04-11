@@ -10,6 +10,6 @@
     <!-- stocknumber when isAdmin -->
     <p> Rate: {{ product.rate }}</p>
     <p> Price: {{ product.price }} euro</p>
-    <button mat-button>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
+    <button mat-button (click)=addToCart(pr)>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
   </div>
 </div>
