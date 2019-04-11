@@ -3,9 +3,12 @@ import { Product } from './../../Product';
 import { AuthService2 } from './../../auth.service';
 import { CartService } from './cart.service';
 import { Purchase } from 'src/app/Purchase';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DataSource } from './../../DataSource';
 import { getMatScrollStrategyAlreadyAttachedError } from '@angular/cdk/overlay/typings/scroll/scroll-strategy';
+import { DeleteComponent } from './delete/delete.component';
+import { DeleteService } from './delete/delete.service';
 
 export interface Table {
   purchaseId: number;
@@ -40,8 +43,10 @@ export class CartComponent implements OnInit, OnChanges {
   ar: any[] = [];
   tableElements: Table[] = [];
 
-  constructor(private cartService: CartService,
-              private authService: AuthService2) { }
+  constructor(public dialog: MatDialog,
+              private cartService: CartService,
+              private authService: AuthService2,
+              private deleteService: DeleteService) { }
 
   async ngOnInit() {
     console.log('User: ' + this.user.id);
@@ -121,22 +126,27 @@ loadLessonsPage() {
     if (type === 'bedroom') {
       // this.bedProducts.push(await this.cartService.getBedProduct(id));
       this.products.push(await this.cartService.getBedProduct(id));
+      return await this.cartService.getBedProduct(id);
       // console.log(this.bedProducts);
     } else if (type === 'bathroom') {
       // this.bathProducts.push(await this.cartService.getBathProduct(id));
       this.products.push(await this.cartService.getBathProduct(id));
+      return await this.cartService.getBathProduct(id);
       // console.log(this.bathProducts);
     } else if (type === 'kitchen') {
       // this.kitchenProducts.push(await this.cartService.getKitchenProduct(id));
       this.products.push(await this.cartService.getKitchenProduct(id));
+      return await this.cartService.getKitchenProduct(id);
       // console.log(this.kitchenProducts);
     } else if (type === 'livingroom') {
       // this.livingProducts.push(await this.cartService.getLivingPRoduct(id));
       this.products.push(await this.cartService.getLivingPRoduct(id));
+      return await this.cartService.getLivingPRoduct(id);
       // console.log(this.livingProducts);
     } else if (type === 'techs') {
       // this.techsProducts.push(await this.cartService.getTechsProduct(id));
       this.products.push(await this.cartService.getTechsProduct(id));
+      return await this.cartService.getTechsProduct(id);
       // console.log(this.techsProducts);
     }
   }
@@ -150,6 +160,22 @@ loadLessonsPage() {
         this.products[z].price];
       }
     }
+  }
+
+
+  delete(purchaseId: number, productId: number, productType: string): void {
+    this.deleteService.getDatas(purchaseId, productId, productType);
+    console.log(purchaseId, productId, productType);
+    this.deleteDialog();
+  }
+
+  deleteDialog() {
+    const dialogRef2 = this.dialog.open(DeleteComponent, {
+
+    });
+    dialogRef2.afterClosed().subscribe(result => {
+      console.log('The delete dialog was closed');
+    });
   }
 
 }

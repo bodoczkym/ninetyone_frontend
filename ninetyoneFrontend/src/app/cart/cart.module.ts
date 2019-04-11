@@ -9,9 +9,11 @@ import {
   MatSortModule, MatTableModule
 } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteComponent } from './cart/delete/delete.component';
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [CartComponent, DeleteComponent],
   imports: [
     CommonModule,
     CartRoutingModule,
@@ -19,8 +21,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     MatIconModule
-  ]
+  ],
+  entryComponents: [
+    DeleteComponent
+  ],
 })
 export class CartModule { }

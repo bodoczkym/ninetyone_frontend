@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { httpOptions } from '../../auth.service';
-import { Purchase } from './../../Purchase';
-import { Product } from './../../Product';
-import { DeleteComponent } from './delete/delete.component';
+import { httpOptions } from './../../../auth.service';
+import { Purchase } from './../../../Purchase';
+import { Product } from './../../../Product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class DeleteService {
+
+  deleteProductId: number;
+  deleteProductType: string;
+  deletePurchaseId: number;
+
   private cartUrl = 'http://localhost:8080/purchases';
   private bedProductUrl = 'http://localhost:8080/bedroom';
   private bathProductUrl = 'http://localhost:8080/bathroom';
@@ -18,14 +22,20 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-
-  getPurchases(id: number): Promise<Purchase[]> {
-    return this.http.get<Purchase[]>(
+  deleteProductFromCart(id: number) {
+    return this.http.delete<Purchase>(
       `${this.cartUrl}/${id}`,
       httpOptions
     ).toPromise();
   }
 
+  updateProduct(product: Product) {
+    return this.http.put<Product>(
+      `http://localhost:8080/${product.type}/${product.id}`,
+      product,
+      httpOptions
+    ).toPromise();
+  }
 
   getTechsProduct(id: number): Promise<Product> {
     return this.http.get<Product>(`${this.techsProductUrl}/${id}`).toPromise();
@@ -47,4 +57,9 @@ export class CartService {
     return this.http.get<Product>(`${this.bathProductUrl}/${id}`).toPromise();
   }
 
+  getDatas(purchaseId: number, productId: number, productType: string) {
+    this.deletePurchaseId = purchaseId;
+    this.deleteProductId = productId;
+    this.deleteProductType = productType;
+  }
 }

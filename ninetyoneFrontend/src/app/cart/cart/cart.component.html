@@ -30,11 +30,11 @@
 
 <ng-container matColumnDef="Modify">
     <mat-header-cell *matHeaderCellDef>   Modify   </mat-header-cell>
-    <mat-cell *matCellDef="let dataSource"> 
+    <mat-cell *matCellDef="let tableElements"> 
       <button mat-button>
           <mat-icon>edit</mat-icon>
       </button>
-      <button mat-button>
+      <button mat-button (click)=delete(tableElements.purchaseId,tableElements.productId,tableElements.productType)>
           <mat-icon>delete</mat-icon>
       </button>
       

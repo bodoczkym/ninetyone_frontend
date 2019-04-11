@@ -8,6 +8,8 @@ export class Product {
     type: string;
     img: string;
     price: number;
+    inCart: number;
+    quantity: number;
     createdAt: Date;
     updatedAt: Date;
 }
