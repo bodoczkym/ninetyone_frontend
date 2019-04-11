@@ -18,14 +18,12 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-
   getPurchases(id: number): Promise<Purchase[]> {
     return this.http.get<Purchase[]>(
       `${this.cartUrl}/${id}`,
       httpOptions
     ).toPromise();
   }
-
 
   getTechsProduct(id: number): Promise<Product> {
     return this.http.get<Product>(`${this.techsProductUrl}/${id}`).toPromise();
@@ -45,6 +43,14 @@ export class CartService {
 
   getBathProduct(id: number): Promise<Product> {
     return this.http.get<Product>(`${this.bathProductUrl}/${id}`).toPromise();
+  }
+
+  addNewPurchase(pr: Purchase): Promise<Purchase> {
+    return this.http.post<Purchase>(
+      this.cartUrl,
+      pr,
+      httpOptions
+    ).toPromise();
   }
 
 }

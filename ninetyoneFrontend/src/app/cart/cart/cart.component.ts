@@ -34,6 +34,7 @@ export class CartComponent implements OnInit, OnChanges {
   ar: any[] = [];
   tableElements: Table[] = [];
   sum = 0;
+  newPurchase = new Purchase();
 
   constructor(public dialog: MatDialog,
               private cartService: CartService,
@@ -70,7 +71,16 @@ export class CartComponent implements OnInit, OnChanges {
 
   addProductToCart(pr: Product) {
     console.log(pr);
-    this.products.push(pr);
+    this.newPurchase.productId = pr.id;
+    this.newPurchase.productType = pr.type;
+    this.newPurchase.user = this.authService.user.id;
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+    const dateTime = date + ' ' + time;
+    this.newPurchase.createdAt = new Date(dateTime);
+    this.newPurchase.updatedAt = new Date(dateTime);
+    this.cartService.addNewPurchase(this.newPurchase);
   }
 
   async getProducts(id: number, type: string) {
