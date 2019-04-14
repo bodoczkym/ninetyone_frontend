@@ -37,6 +37,7 @@ export class StaffService {
     }
 
     getRate(rate: number) {
+        console.log(this.user);
         console.log('The rate is: ' + rate);
         this.user.rates = this.user.rates + rate;
         this.user.voters = this.user.voters + 1;
@@ -46,10 +47,10 @@ export class StaffService {
 
     sendRateToService(user: User): Promise<User> {
         return this.http.put<User>(
-          this.userUrl,
-          user,
-          httpOptions
+            `${this.userUrl}/${user.id}`,
+            user,
+            httpOptions
         ).toPromise();
-      }
+    }
 
 }

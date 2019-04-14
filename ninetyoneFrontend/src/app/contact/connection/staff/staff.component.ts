@@ -35,11 +35,11 @@ export class StaffComponent implements OnInit {
   }
 
   rate(user: User): void {
+    this.userService.user = user;
     const dialogRef2 = this.dialog.open(RateComponent, {
 
     });
     console.log(user);
-    this.userService.user = user;
     dialogRef2.afterClosed().subscribe(result => {
       console.log('The rate dialog was closed');
     });
