@@ -10,6 +10,7 @@ import { BedroomComponent } from './product-list/bedroom/bedroom.component';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
 import { AuthGuard } from './../auth.guard';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,14 @@ const routes: Routes = [
   {
     path: 'modify',
     component: EditProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_OWNER']
+    }
+  },
+  {
+    path: 'add',
+    component: NewProductComponent,
     canActivate: [AuthGuard],
     data: {
       roles: ['ROLE_OWNER']

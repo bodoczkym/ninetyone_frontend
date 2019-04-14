@@ -12,6 +12,7 @@ import { EditProductService } from './../edit-product/edit-product.service';
 import { DeleteComponent } from './../delete/delete.component';
 import { DeleteService } from './../delete/delete.service';
 import { CartComponent } from './../../cart/cart/cart.component';
+import { NewProductComponent } from '../new-product/new-product.component';
 
 @Component({
   selector: 'app-product-list',

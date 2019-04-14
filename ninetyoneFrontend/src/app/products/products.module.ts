@@ -37,11 +37,12 @@ import { SingleProductComponent } from './product-list/single-product/single-pro
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { DeleteComponent } from './delete/delete.component';
 import { CartComponent } from './../cart/cart/cart.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 @NgModule({
   declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,
      KitchenComponent, LivingRoomComponent, BedroomComponent, BathroomComponent, TechsComponent, SingleProductComponent,
-     EditProductComponent, DeleteComponent ],
+     EditProductComponent, DeleteComponent, NewProductComponent ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
