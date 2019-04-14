@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Product } from './../../Product';
 import { HttpClient } from '@angular/common/http';
-import { httpOptions } from '../../../auth.service';
-import 'rxjs/add/operator/map';
-import { Product } from './../../../Product';
+import { httpOptions } from './../../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EditProductService {
+export class DeleteService {
 
   private productUrl: string;
 
   constructor(
-      private http: HttpClient
+    private http: HttpClient
   ) { }
 
   getUrl(type: string, id: number) {
@@ -22,17 +21,19 @@ export class EditProductService {
     } else {
       this.productUrl = 'http://localhost:8080/' + type + '/' + id;
     }
+
   }
 
-  getProduct(): Promise<Product> {return this.http.get<Product>(`${this.productUrl}`).toPromise();
+  getProduct(): Promise<Product> {
+    return this.http.get<Product>(`${this.productUrl}`).toPromise();
   }
 
-  modify(pr: Product): Promise<Product> {
-    return this.http.put<Product>(
+  deleteProduct(pr: Product) {
+    return this.http.delete<Product>(
       `${this.productUrl}`,
-      pr,
       httpOptions
     ).toPromise();
-}
+  }
+
 
 }

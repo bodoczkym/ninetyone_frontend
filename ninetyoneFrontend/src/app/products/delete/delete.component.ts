@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeleteService } from './delete.service';
-import { Product } from './../../../Product';
+import { Product } from './../../Product';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -17,6 +17,7 @@ export class DeleteComponent implements OnInit {
 
   async ngOnInit() {
     this.product = await this.deleteService.getProduct();
+    console.log(this.product);
   }
 
   cancel() {

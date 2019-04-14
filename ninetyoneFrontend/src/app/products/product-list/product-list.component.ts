@@ -8,9 +8,9 @@ import { ProductFilterFilterPipe } from './product-filter-filter.pipe';
 import { SingleProductService } from './single-product/single-product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService2 } from './../../auth.service';
-import { EditProductService } from './../product-list/edit-product/edit-product.service';
-import { DeleteComponent } from './delete/delete.component';
-import { DeleteService } from './delete/delete.service';
+import { EditProductService } from './../edit-product/edit-product.service';
+import { DeleteComponent } from './../delete/delete.component';
+import { DeleteService } from './../delete/delete.service';
 import { CartComponent } from './../../cart/cart/cart.component';
 
 @Component({
@@ -160,7 +160,6 @@ export class ProductListComponent implements OnInit {
     const dialogRef2 = this.dialog.open(DeleteComponent, {
 
     });
-    console.log(pr);
     dialogRef2.afterClosed().subscribe(result => {
       console.log('The delete dialog was closed');
     });

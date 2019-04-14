@@ -9,7 +9,7 @@ import { TechsComponent } from './product-list/techs/techs.component';
 import { BedroomComponent } from './product-list/bedroom/bedroom.component';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
 import { AuthGuard } from './../auth.guard';
-import { EditProductComponent } from './product-list/edit-product/edit-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 const routes: Routes = [
   {

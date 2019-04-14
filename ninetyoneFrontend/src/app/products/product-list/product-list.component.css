@@ -95,8 +95,10 @@ mat-card-header {
 .image {
     width: 200px;
 }
-.mat-card-actions {
-    justify-content: end;
+mat-card .mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     color: rgb(93, 99, 75);
     padding:0;
     padding-bottom:5px;

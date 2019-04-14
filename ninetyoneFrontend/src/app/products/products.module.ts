@@ -34,8 +34,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SingleProductComponent } from './product-list/single-product/single-product.component';
-import { EditProductComponent } from './product-list/edit-product/edit-product.component';
-import { DeleteComponent } from './product-list/delete/delete.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { DeleteComponent } from './delete/delete.component';
 import { CartComponent } from './../cart/cart/cart.component';
 
 @NgModule({
