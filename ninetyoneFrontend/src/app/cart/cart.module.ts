@@ -10,7 +10,9 @@ import {
 } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './cart/delete/delete.component';
 
 @NgModule({
@@ -25,7 +27,9 @@ import { DeleteComponent } from './cart/delete/delete.component';
     MatDialogModule,
     MatListModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
+    FormsModule
   ],
   entryComponents: [
     DeleteComponent

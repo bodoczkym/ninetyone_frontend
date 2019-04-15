@@ -21,7 +21,6 @@ export class DeleteService {
     } else {
       this.productUrl = 'http://localhost:8080/' + type + '/' + id;
     }
-
   }
 
   getProduct(): Promise<Product> {

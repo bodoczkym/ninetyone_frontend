@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Product } from './../../Product';
 import { AuthService2 } from './../../auth.service';
 import { CartService } from './cart.service';
@@ -6,6 +6,7 @@ import { Purchase } from 'src/app/Purchase';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from './delete/delete.component';
 import { DeleteService } from './delete/delete.service';
+import { Sold } from 'src/app/Sold';
 
 export interface Table {
   purchaseId: number;
@@ -36,6 +37,8 @@ export class CartComponent implements OnInit, OnChanges {
   sum = 0;
   newPurchase = new Purchase();
   updateProductWhenAddedToCart: Product;
+  helpSold: Sold[] = [];
+  sold: Sold[] = [];
 
   constructor(public dialog: MatDialog,
               private cartService: CartService,
@@ -47,6 +50,7 @@ export class CartComponent implements OnInit, OnChanges {
     // get purchases
     let z;
     this.helper = await this.cartService.getPurchases(this.user.id);
+    console.log('getpurchases: ' + this.helper);
     for (z in this.helper) {
       if (true) {
         this.purchases.push(this.helper[z]);
@@ -58,7 +62,7 @@ export class CartComponent implements OnInit, OnChanges {
         await this.getProducts(this.purchases[z].productId, this.purchases[z].productType);
       }
     }
-    // helper method
+    // helper method for dataSource
     this.toArray();
     // get tableElements for dataSource for table in the html
     this.getTableElements();
@@ -163,4 +167,52 @@ export class CartComponent implements OnInit, OnChanges {
     this.cartService.updateProduct(this.updateProductWhenAddedToCart); // update inCart and quantity
   }
 
+  pay() {
+    let k;
+    // take sold into db
+    for (k in this.sold) {
+      if (true) {
+        this.cartService.sold(this.sold[k]);
+      }
+    }
+    // delete purchases
+    for (k in this.purchases) {
+      if (true) {
+        this.cartService.deletePurchases(this.purchases[k].id);
+      }
+    }
+    // delete product quantity or if it's 0 delete the product
+    for (k in this.products) {
+      if (this.products[k].quantity === 0) {
+        this.cartService.deleteProduct(this.products[k]);
+      } else {
+        this.products[k].inCart = this.products[k].inCart - 1;
+        this.cartService.updateProduct(this.products[k]);
+      }
+    }
+  }
+
+  createSoldAndPay() {
+    let k;
+    for ( k in this.purchases) {
+      if (true) {
+        this.helpSold[k] = new Sold();
+        this.helpSold[k].id = 0;
+        this.helpSold[k].userId = this.user.id;
+        this.helpSold[k].productId = this.products[k].id;
+        this.helpSold[k].productName = this.products[k].name;
+        this.helpSold[k].stockNumber = this.products[k].stocknumber;
+        this.helpSold[k].filters = this.products[k].filters;
+        this.helpSold[k].description = this.products[k].description;
+        this.helpSold[k].rate = this.products[k].rate;
+        this.helpSold[k].voters = this.products[k].voters;
+        this.helpSold[k].type = this.products[k].type;
+        this.helpSold[k].img = this.products[k].img;
+        this.helpSold[k].price = this.products[k].price;
+        this.sold.push(Object.assign(new Product(), this.helpSold[k]));
+        console.log(this.sold);
+      }
+    }
+    this.pay();
+  }
 }

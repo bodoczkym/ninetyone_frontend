@@ -4,6 +4,7 @@ import { httpOptions } from '../../auth.service';
 import { Purchase } from './../../Purchase';
 import { Product } from './../../Product';
 import { DeleteComponent } from './delete/delete.component';
+import { Sold } from 'src/app/Sold';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class CartService {
   private kitchenProductUrl = 'http://localhost:8080/kitchen';
   private livingProductUrl = 'http://localhost:8080/living-room';
   private techsProductUrl = 'http://localhost:8080/techs';
+  private soldUrl = 'http://localhost:8080/sold';
   private productUrl: string;
 
   constructor(private http: HttpClient) { }
@@ -62,5 +64,31 @@ export class CartService {
     ).toPromise();
   }
 
+  sold(sold: Sold): Promise<Sold> {
+    return this.http.post<Sold>(
+      this.soldUrl,
+      sold,
+      httpOptions
+    ).toPromise();
+  }
+
+  deletePurchases(id: number) {
+    return this.http.delete<Purchase>(
+      `${this.cartUrl}/${id}`,
+      httpOptions
+    ).toPromise();
+  }
+
+  deleteProduct(pr: Product) {
+    if (pr.type === 'livingroom') {
+      this.productUrl = 'http://localhost:8080/living-room/' + pr.id;
+    } else {
+      this.productUrl = 'http://localhost:8080/' + pr.type + '/' + pr.id;
+    }
+    return this.http.delete<Product>(
+      `${this.productUrl}`,
+      httpOptions
+    ).toPromise();
+  }
 
 }
