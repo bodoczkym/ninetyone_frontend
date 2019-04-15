@@ -12,7 +12,7 @@ import { EditProductService } from './../edit-product/edit-product.service';
 import { DeleteComponent } from './../delete/delete.component';
 import { DeleteService } from './../delete/delete.service';
 import { CartComponent } from './../../cart/cart/cart.component';
-import { NewProductComponent } from '../new-product/new-product.component';
+import { RateProductComponent } from './../rate-product/rate-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -170,16 +170,22 @@ export class ProductListComponent implements OnInit {
   addToCart(pr: Product) {
     this.cartComponent.addProductToCart(pr);
   }
-  /*
-    rate(): void {
-      const dialogRef2 = this.dialog.open(RateComponent, {
+/*
+  rate(pr: Product) {
+    this.productListService.getProduct(pr);
+    this.getRate();
+  }*/
 
-      });
+  rate(pr: Product) {
+    this.productListService.product = pr;
+    const dialogRef2 = this.dialog.open(RateProductComponent, {
 
-      dialogRef2.afterClosed().subscribe(result => {
-        console.log('The rate dialog was closed');
-      });
-    }*/
+    });
+    console.log(pr);
+    dialogRef2.afterClosed().subscribe(result => {
+      console.log('The rate dialog was closed');
+    });
+  }
 
 
 

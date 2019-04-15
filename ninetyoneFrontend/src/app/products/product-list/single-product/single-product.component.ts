@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SingleProductService } from './single-product.service';
 import { Product } from 'src/app/Product';
+import { CartComponent } from './../../../cart/cart/cart.component';
 
 @Component({
   selector: 'app-single-product',
@@ -12,7 +13,8 @@ export class SingleProductComponent implements OnInit {
   filters = [];
   str = '';
 
-  constructor(private singleProductService: SingleProductService) { }
+  constructor(private singleProductService: SingleProductService,
+              private cartComponent: CartComponent) { }
 
   async ngOnInit() {
     this.product = await this.singleProductService.getProduct();
@@ -20,7 +22,6 @@ export class SingleProductComponent implements OnInit {
   }
 
   splitFilters(prod: Product) {
-    console.log(prod.filters);
     this.filters = prod.filters.split(':');
     this.filtersToString();
   }
@@ -31,6 +32,10 @@ export class SingleProductComponent implements OnInit {
       this.str += f + ', ';
     }
     this. str = this.str.slice(0, this.str.length - 2);
+  }
+
+  addToCart() {
+    this.cartComponent.addProductToCart(this.product);
   }
 
 

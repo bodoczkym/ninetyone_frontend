@@ -28,6 +28,8 @@ import { TechsComponent } from './product-list/techs/techs.component';
 import { ProductFilterPipe } from './product-list/product-filter.pipe';
 import { ProductPriceFilterPipe } from './product-list/product-price-filter.pipe';
 import { ProductFilterFilterPipe } from './product-list/product-filter-filter.pipe';
+// Rating
+import { StarRatingModule } from '../../../node_modules/angular-star-rating';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -38,11 +40,12 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { DeleteComponent } from './delete/delete.component';
 import { CartComponent } from './../cart/cart/cart.component';
 import { NewProductComponent } from './new-product/new-product.component';
+import { RateProductComponent } from './rate-product/rate-product.component';
 
 @NgModule({
   declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,
      KitchenComponent, LivingRoomComponent, BedroomComponent, BathroomComponent, TechsComponent, SingleProductComponent,
-     EditProductComponent, DeleteComponent, NewProductComponent ],
+     EditProductComponent, DeleteComponent, NewProductComponent, RateProductComponent ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
@@ -61,10 +64,12 @@ import { NewProductComponent } from './new-product/new-product.component';
     Ng5SliderModule,
     MatTabsModule,
     MatExpansionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StarRatingModule.forRoot()
   ],
   entryComponents: [
-    DeleteComponent
+    DeleteComponent,
+    RateProductComponent
   ],
   providers: [ CartComponent ]
 })

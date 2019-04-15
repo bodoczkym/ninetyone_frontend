@@ -5,6 +5,7 @@ export class Product {
     filters: string;
     description: string;
     rate: number;
+    voters: number;
     type: string;
     img: string;
     price: number;

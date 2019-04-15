@@ -49,6 +49,7 @@
                         <img mat-card-image src="{{pr.img}}" class="image" alt="BC">
                     </button>
                     <mat-card-actions class="mat-card-actions" *ngIf="authService.isEmployee">
+
                         <div>
                             <a [routerLink]="['/products', 'modify']" (click)="openEdit(pr)" mat-flat-button
                                 class="buttons" alt="Edit product">
@@ -61,6 +62,13 @@
                             </a>
                         </div>                        
                     </mat-card-actions>
+                    <div *ngIf="authService.isLoggedIn && !authService.isEmployee">
+                            <button mat-button *ngIf="pr.rate!==0" (click)=rate(pr) type="number">RATE {{ pr.rate / pr.voters | number:0 }}</button>
+                            <button mat-button *ngIf="pr.rate===0" (click)=rate(pr)>RATE</button>
+                    </div>
+                    
+
+
                     <button mat-button *ngIf="authService.isLoggedIn && !authService.isEmployee" (click)=addToCart(pr)>Add to cart <mat-icon> local_grocery_store</mat-icon></button>
                 </mat-card>
 
