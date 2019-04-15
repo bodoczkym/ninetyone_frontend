@@ -15,6 +15,7 @@ export class CartService {
   private kitchenProductUrl = 'http://localhost:8080/kitchen';
   private livingProductUrl = 'http://localhost:8080/living-room';
   private techsProductUrl = 'http://localhost:8080/techs';
+  private productUrl: string;
 
   constructor(private http: HttpClient) { }
 
@@ -52,5 +53,14 @@ export class CartService {
       httpOptions
     ).toPromise();
   }
+
+  updateProduct(pr: Product) {
+    return this.http.put<Product>(
+      `http://localhost:8080/${pr.type}/${pr.id}`,
+      pr,
+      httpOptions
+    ).toPromise();
+  }
+
 
 }

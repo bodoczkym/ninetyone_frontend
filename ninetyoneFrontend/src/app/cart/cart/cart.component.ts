@@ -35,6 +35,7 @@ export class CartComponent implements OnInit, OnChanges {
   tableElements: Table[] = [];
   sum = 0;
   newPurchase = new Purchase();
+  updateProductWhenAddedToCart: Product;
 
   constructor(public dialog: MatDialog,
               private cartService: CartService,
@@ -81,6 +82,7 @@ export class CartComponent implements OnInit, OnChanges {
     this.newPurchase.createdAt = new Date(dateTime);
     this.newPurchase.updatedAt = new Date(dateTime);
     this.cartService.addNewPurchase(this.newPurchase);
+    this.getProductWhenAddedToCart(pr);
   }
 
   async getProducts(id: number, type: string) {
@@ -152,6 +154,13 @@ export class CartComponent implements OnInit, OnChanges {
        this.sum += this.products[z].price;
       }
     }
+  }
+
+  async getProductWhenAddedToCart(pr: Product) {
+    this.updateProductWhenAddedToCart = await this.getProducts(pr.id, pr.type);
+    this.updateProductWhenAddedToCart.inCart += 1;
+    this.updateProductWhenAddedToCart.quantity -= 1;
+    this.cartService.updateProduct(this.updateProductWhenAddedToCart); // update inCart and quantity
   }
 
 }
