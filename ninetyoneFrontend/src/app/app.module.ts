@@ -18,7 +18,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { CartComponent } from './cart/cart/cart.component';
 
 
 @NgModule({

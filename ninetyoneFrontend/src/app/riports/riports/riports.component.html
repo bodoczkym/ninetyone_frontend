@@ -1,0 +1,79 @@
+<div>
+  <p class="text"> Riports by </p>
+  <mat-radio-group [(ngModel)]="bindBy">
+    <mat-radio-button value="users">users</mat-radio-button>
+    <mat-radio-button value="months">months</mat-radio-button>
+  </mat-radio-group>
+
+  <div *ngIf="bindBy == 'users'">
+    <div *ngFor="let e of map | keyvalue">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ e.key.username }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ e.key.email }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <div *ngFor="let v of e.value">
+          {{ v.type }} {{ v.productName }}
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+
+
+  <div *ngIf="bindBy == 'months'">
+
+    <mat-radio-group [(ngModel)]="periods">
+      <mat-radio-button *ngFor="let d of months" [value]="d">
+        {{ d }}
+      </mat-radio-button>
+      <mat-radio-button  [value]="null">
+          All
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <div *ngIf="periods == null">
+      <div *ngFor="let day of monthsmap | keyvalue">
+        {{ day }}
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ day.key }}
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <div *ngFor="let val of day.value">
+            {{ val.type }} {{ val.productName }}
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+
+    <div *ngFor="let day of monthsmap | keyvalue">
+      <div *ngIf="periods == day.key">
+        {{ day }}
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ day.key }}
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <div *ngFor="let val of day.value">
+            {{ val.type }} {{ val.productName }}
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+    </div>
+  </div>
+</div>

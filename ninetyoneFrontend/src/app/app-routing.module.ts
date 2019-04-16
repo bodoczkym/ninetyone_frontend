@@ -49,6 +49,14 @@ const routes: Routes = [
         }
     },
     {
+        path: 'riports',
+        loadChildren: './riports/riports.module#RiportsModule',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ROLE_OWNER', 'GUEST']
+        }
+    },
+    {
         path: 'forum',
         loadChildren: './forum/forum.module#ForumModule',
         canActivate: [AuthGuard],
