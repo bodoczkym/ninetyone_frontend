@@ -23,6 +23,7 @@ export class RiportsComponent implements OnInit {
   values;
   months = [];
   monthsmap = new Map<number, Sold[]>();
+  typesAndCounters = new Map<number, Map<string, number>>();
 
   constructor(private riportsService: RiportsService) { }
 
@@ -32,7 +33,6 @@ export class RiportsComponent implements OnInit {
     console.log(this.sold);
     // get users from sold rows
     this.getUsers();
-
     // get months
     this.getMonths();
 
@@ -43,16 +43,12 @@ export class RiportsComponent implements OnInit {
     for (k in this.sold) {
       if (!(this.months.includes(this.sold[k].createdAt))) {
         const helper = new Date(this.sold[k].createdAt);
-        console.log('helper: ' + helper);
         const day = helper.getDate();
-        console.log('day: ' + day);
         if (!(this.months.includes(day))) {
           this.months.push(day);
         }
       }
     }
-    console.log('months:');
-    console.log(this.months);
     this.getMonthsWithSold();
   }
 
@@ -69,6 +65,34 @@ export class RiportsComponent implements OnInit {
       }
     }
     console.log(this.monthsmap);
+    this.getMonthsWithCounter();
+  }
+
+  getMonthsWithCounter() {
+    let monthsHelper;
+    let l;
+    for (let i = 0; i < this.months.length; i++) {
+      console.log('l: ' + this.months[i]);
+      monthsHelper = this.monthsmap.get(this.months[i]);
+      for (l in monthsHelper) {
+        if (this.typesAndCounters.has(this.months[i])) {
+          if (this.typesAndCounters.get(this.months[i]).has(monthsHelper[l].type)) {
+            console.log('1');
+            this.typesAndCounters.get(this.months[i]).set(monthsHelper[l].type,
+              this.typesAndCounters.get(this.months[i]).get(monthsHelper[l].type) + 1);
+          } else {
+            console.log('2');
+            this.typesAndCounters.get(this.months[i]).set(monthsHelper[l].type, 1);
+          }
+        } else {
+          console.log('3');
+          this.typesAndCounters.set(this.months[i], new Map());
+          this.typesAndCounters.get(this.months[i]).set(monthsHelper[l].type, 1);
+          console.log(this.typesAndCounters);
+        }
+      }
+    }
+    console.log(this.typesAndCounters);
   }
 
   async getUsers() {
@@ -102,22 +126,7 @@ export class RiportsComponent implements OnInit {
         }
       }
     }
-   //  this.getKeys();
-  }
-/*
-  getKeys() {
-    this.keys = this.map.keys();
-    console.log('keys:');
-    console.log(this.map.keys());
   }
 
-  getValues(key: User) {
-    console.log(key);
-    this.values = [];
-    this.values = this.map.get(key);
-    console.log('map values:');
-    console.log(this.values);
-    return this.values;
-  }*/
 
 }

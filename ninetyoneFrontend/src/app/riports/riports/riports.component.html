@@ -1,8 +1,8 @@
 <div>
-  <p class="text"> Riports by </p>
+  <p class="text"> Reports by </p>
   <mat-radio-group [(ngModel)]="bindBy">
     <mat-radio-button value="users">users</mat-radio-button>
-    <mat-radio-button value="months">months</mat-radio-button>
+    <mat-radio-button value="months">days</mat-radio-button>
   </mat-radio-group>
 
   <div *ngIf="bindBy == 'users'">
@@ -37,8 +37,7 @@
     </mat-radio-group>
 
     <div *ngIf="periods == null">
-      <div *ngFor="let day of monthsmap | keyvalue">
-        {{ day }}
+      <div *ngFor="let day of typesAndCounters | keyvalue">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -48,17 +47,16 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-divider></mat-divider>
-          <div *ngFor="let val of day.value">
-            {{ val.type }} {{ val.productName }}
+          <div *ngFor="let val of day.value | keyvalue">
+            {{ val.key }} : {{ val.value }}
           </div>
         </mat-expansion-panel>
       </div>
     </div>
 
 
-    <div *ngFor="let day of monthsmap | keyvalue">
+    <div *ngFor="let day of typesAndCounters | keyvalue">
       <div *ngIf="periods == day.key">
-        {{ day }}
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -68,8 +66,8 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-divider></mat-divider>
-          <div *ngFor="let val of day.value">
-            {{ val.type }} {{ val.productName }}
+          <div *ngFor="let val of day.value | keyvalue">
+            {{ val.key }} : {{ val.value }}
           </div>
         </mat-expansion-panel>
       </div>
