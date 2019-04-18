@@ -4,10 +4,11 @@ import { LivingRoomService } from './living-room.service';
 import { Product } from './../../../Product';
 import { } from 'ng2-nouislider';
 import { Options, LabelType } from 'ng5-slider';
-import { ProductFilterFilterPipe } from './../product-filter-filter.pipe';
 import { SingleProductService } from './../single-product/single-product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService2 } from './../../../auth.service';
+import { RateProductComponent } from '../rate-product/rate-product.component';
+import { ProductListService } from '../product-list.service';
 
 @Component({
   selector: 'app-living-room',
@@ -43,7 +44,8 @@ export class LivingRoomComponent implements OnInit {
               private singleProductService: SingleProductService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService2) {
+              private authService: AuthService2,
+              private productListService: ProductListService) {
                }
 
   async ngOnInit() {
@@ -112,9 +114,21 @@ export class LivingRoomComponent implements OnInit {
   }
 
   openSingleProductPage(product: Product) {
-    this.singleProductService.getUrl(product.type, product.stocknumber);
+    this.singleProductService.getUrl(product.type, product.id);
     // route
-    this.router.navigate(['/products/' + product.type + '/' + product.stocknumber]);
+    this.router.navigate(['/products/' + product.type + '/' + product.id]);
+  }
+
+  rate(pr: Product) {
+    console.log('0');
+    this.productListService.product = pr;
+    console.log(this.productListService.product);
+    const dialogRef2 = this.dialog.open(RateProductComponent, {
+
+    });
+    dialogRef2.afterClosed().subscribe(result => {
+      console.log('The rate dialog was closed');
+    });
   }
 
 }

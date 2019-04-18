@@ -62,8 +62,8 @@
                             </a>
                         </div>                        
                     </mat-card-actions>
-                    <div *ngIf="authService.isLoggedIn && !authService.isEmployee">
-                            <button mat-button *ngIf="pr.rate!==0" (click)=rate(pr) type="number">RATE {{ pr.rate / pr.voters | number:0 }}</button>
+                    <div>
+                            <button mat-button *ngIf="pr.rate!==0" (click)=rate(pr) type="number">RATE: {{ pr.rate / pr.voters | number:0 }}</button>
                             <button mat-button *ngIf="pr.rate===0" (click)=rate(pr)>RATE</button>
                     </div>
                     
@@ -78,6 +78,10 @@
     <div class="products" *ngIf="router.url==='/products/kitchen' || router.url==='/products/livingroom' 
     || router.url==='/products/bathroom' || router.url==='/products/bedroom' || 
     router.url==='/products/techs'">
+    <a [routerLink]="['/products', 'add']" mat-flat-button *ngIf="authService.isEmployee" class="add-new-product"
+            alt="Add product">
+            <mat-icon>add</mat-icon> Add new product
+        </a>
         <div *ngFor="let product of products | productFilter:searchTerm | priceFilter:value:highValue ">
             <mat-card>
                 <button mat-button (click)="openSingleProductPage(product)">
@@ -95,20 +99,25 @@
                     </mat-card-header>
                     <img mat-card-image src="{{product.img}}" class="image" alt="BC">
                 </button>
-                <mat-card-actions *ngIf="authService.isEmployee" class="mat-card-actions">
+                <mat-card-actions class="mat-card-actions" *ngIf="authService.isEmployee">
+
                     <div>
-                        <a [routerLink]="['/products', 'modify']" (click)="edit(product)" mat-flat-button
+                        <a [routerLink]="['/products', 'modify']" (click)="openEdit(product)" mat-flat-button
                             class="buttons" alt="Edit product">
                             <mat-icon style="width:5px;height:5px">edit</mat-icon>
                         </a>
                     </div>
                     <div>
-                        <a [routerLink]="['/products', 'delete']" mat-flat-button class="buttons" alt="Delete product">
+                        <a (click)="delete(product)" mat-flat-button class="buttons" alt="Delete product">
                             <mat-icon style="width:5px;height:5px">delete</mat-icon>
                         </a>
-                    </div>
-
+                    </div>                        
                 </mat-card-actions>
+                <div>
+                        <button mat-button *ngIf="product.rate!==0" (click)=rate(product) type="number">RATE: {{ product.rate / product.voters | number:0 }}</button>
+                        <button mat-button *ngIf="product.rate===0" (click)=rate(product)>RATE</button>
+                </div>
+                
             </mat-card>
         </div>
     </div>

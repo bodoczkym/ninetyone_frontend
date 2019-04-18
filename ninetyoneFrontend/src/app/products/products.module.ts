@@ -10,7 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -40,7 +40,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { DeleteComponent } from './delete/delete.component';
 import { CartComponent } from './../cart/cart/cart.component';
 import { NewProductComponent } from './new-product/new-product.component';
-import { RateProductComponent } from './rate-product/rate-product.component';
+import { RateProductComponent } from './product-list/rate-product/rate-product.component';
 
 @NgModule({
   declarations: [ProductFilterFilterPipe, ProductPriceFilterPipe, ProductFilterPipe, ProductListComponent,

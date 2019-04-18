@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column
+}
+
+form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;    
+    padding-top: 10px;
+}
+
+
+.mat-form-field {
+    text-align: left;
+    color: black;
+    width: 100%;
+}
+
+.mat-form-field .input {
+    border-color: white
+}
+
+.send {
+    color: black;
+    background-color: rgb(255, 98, 50);
+    width: 10%;
+    margin-top: 1%;
+}
+
+.container {
+    margin: 0.5%;
+}
+
+.mat-expansion-panel {   
+    margin: 2%;
+    height: fit-content;
+    padding: 15px;
+    background-clip: border-box;
+}
+
+.container .mat-expansion-panel-header-title,
+.container .mat-expansion-panel-header-description {
+  flex-basis: 0;
+  align-items: flex-start;
+}
+
+
+
+
+

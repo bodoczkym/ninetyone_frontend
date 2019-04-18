@@ -36,7 +36,7 @@ export class StaffService {
         ).toPromise();
     }
 
-    getRate(rate: number) {
+    setRate(rate: number) {
         console.log(this.user);
         console.log('The rate is: ' + rate);
         this.user.rates = this.user.rates + rate;

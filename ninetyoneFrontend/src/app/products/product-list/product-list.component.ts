@@ -12,7 +12,8 @@ import { EditProductService } from './../edit-product/edit-product.service';
 import { DeleteComponent } from './../delete/delete.component';
 import { DeleteService } from './../delete/delete.service';
 import { CartComponent } from './../../cart/cart/cart.component';
-import { RateProductComponent } from './../rate-product/rate-product.component';
+import { RateProductComponent } from './rate-product/rate-product.component';
+import { RateComponent } from 'src/app/contact/connection/staff/rate/rate.component';
 
 @Component({
   selector: 'app-product-list',
@@ -51,6 +52,8 @@ export class ProductListComponent implements OnInit {
     showTicks: true,
     showTicksValues: true
   };
+
+  tempProduct: Product;
 
   constructor(public dialog: MatDialog,
               private productListService: ProductListService,
@@ -170,18 +173,15 @@ export class ProductListComponent implements OnInit {
   addToCart(pr: Product) {
     this.cartComponent.addProductToCart(pr);
   }
-/*
-  rate(pr: Product) {
-    this.productListService.getProduct(pr);
-    this.getRate();
-  }*/
+
 
   rate(pr: Product) {
+    console.log('0');
     this.productListService.product = pr;
+    console.log(this.productListService.product);
     const dialogRef2 = this.dialog.open(RateProductComponent, {
 
     });
-    console.log(pr);
     dialogRef2.afterClosed().subscribe(result => {
       console.log('The rate dialog was closed');
     });

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { httpOptions } from '../../auth.service';
 import 'rxjs/add/operator/map';
 import { Product } from './../../Product';
+import { Feedback } from 'src/app/Feedback';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,15 @@ import { Product } from './../../Product';
 export class ProductListService {
   product: Product;
   productUrl: string;
+  rate: number;
+  feedback: Feedback;
 
   private bedProductUrl = 'http://localhost:8080/bedroom';
   private bathProductUrl = 'http://localhost:8080/bathroom';
   private kitchenProductUrl = 'http://localhost:8080/kitchen';
   private livingProductUrl = 'http://localhost:8080/living-room';
   private techsProductUrl = 'http://localhost:8080/techs';
+  private feedbackUrl = 'http://localhost:8080/feedbacks';
 
 
   constructor(
@@ -82,44 +86,64 @@ export class ProductListService {
     ).toPromise();
   }
 
-  getRate(rate: number) {
-    console.log('The rate is: ' + rate);
+  /* feedbacks */
+  getFeedbacks(): Promise<Feedback[]> {
+    return this.http.get<Feedback[]>(
+      this.feedbackUrl,
+      httpOptions
+    ).toPromise();
+  }
+
+  /* send rate  */
+
+  setRate(rate: number) {
+    this.rate = rate;
     this.product.voters = this.product.voters + 1;
-    this.product.rate = this.product.rate + rate;
+    this.product.rate = this.product.rate + this.rate;
     console.log('The product\'s rate is: ' + (this.product.rate / this.product.voters));
     if (this.product.type === 'livingroom') {
       this.productUrl = 'http://localhost:8080/living-room';
     } else {
       this.productUrl = 'http://localhost:8080/' + this.product.type;
     }
-    this.sendRateToService(this.product);
+    this.sendRate(this.product);
   }
 
-  sendRateToService(pr: Product): Promise<Product> {
+  setRateAndForm(feedback: Feedback, rate: number) {
+    this.setRate(rate);
+    this.sendFeedback(feedback);
+  }
+
+  sendRate(pr: Product): Promise<Product> {
     return this.http.put<Product>(
       `${this.productUrl}/${pr.id}`,
       pr,
       httpOptions
     ).toPromise();
   }
-/*
-  public getProduct(pr: Product) {
-    this.product = new Product();
-    this.product.id = pr.id;
-    this.product.name = pr.name;
-    this.product.filters = pr.filters;
-    this.product.img = pr.img;
-    this.product.inCart = pr.inCart;
-    this.product.price = pr.price;
-    this.product.quantity = pr.quantity;
-    this.product.rate = pr.rate;
-    this.product.stocknumber = pr.stocknumber;
-    this.product.type = pr.type;
-    this.product.updatedAt = pr.updatedAt;
-    this.product.voters = pr.voters;
-    this.product.description = pr.description;
-    this.product.createdAt = pr.createdAt;
-    console.log(this.product.rate);
-    this.proba = this.product;
-  }*/
+
+  sendFeedback(feedback: Feedback): Promise<Feedback> {
+    this.feedback = feedback;
+   // this.getId(feedback);
+    console.log(this.feedback);
+    return this.http.post<Feedback>(
+      `${this.feedbackUrl}`,
+      this.feedback,
+      httpOptions
+    ).toPromise();
+  }
+
+  getId(f: Feedback) {
+    if (this.product.type === 'bedroom') {
+      this.feedback.bedroomId = this.product.id;
+    } else if (this.product.type === 'bathroom') {
+      this.feedback.bathroomId = this.product.id;
+    } else if (this.product.type === 'livingroom') {
+      this.feedback.livingroomId = this.product.id;
+    } else if (this.product.type === 'kitchen') {
+      this.feedback.kitchenId = this.product.id;
+    } else if (this.product.type === 'techs') {
+      this.feedback.techsId = this.product.id;
+    }
+  }
 }

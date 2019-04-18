@@ -67,7 +67,7 @@ export class RateComponent implements OnInit {
     this.getColor($event.rating);
     console.log('onClick $event: ', $event);
     this.onClickResult = $event;
-    this.staffService.getRate($event.rating);
+    this.staffService.setRate($event.rating);
   }
 
 }

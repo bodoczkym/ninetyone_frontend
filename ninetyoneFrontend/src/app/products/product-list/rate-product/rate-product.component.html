@@ -1,0 +1,27 @@
+<div class="container">
+    <star-rating *ngIf="authService.isLoggedIn && !authService.isEmployee" class="dialog" [starType]="'svg'"
+        labelPosition="top" [labelText]="myLabelText" speed="slow" (starClickChange)="onClick($event, rating)"
+         [getColor]="getColor" [showHalfStars]="true" [rating]="" [hoverEnabled]="true">
+    </star-rating>
+
+    <div *ngIf="!authService.isLoggedIn">
+        You have to log in to rate a product.
+    </div>
+
+
+    <form [formGroup]="rateForm" class="dialog" (ngSubmit)="onSubmit()">
+        <h1 mat-dialog-title> Give feedback </h1>
+        <p> You have to choose a star if you write something.</p>
+        <div mat-dialog-content>
+            <mat-form-field class="input-field" appearance="outline">
+                <textarea formControlName="feedb" #message matInput maxlength="1000" rows="7"></textarea>
+                <mat-hint>{{message.value.length}} / 1000</mat-hint>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-raised-button class="cancel" (click)=cancel()>Cancel</button>
+            <button mat-raised-button class="send" type="submit" [disabled]="rateForm.invalid"> Send
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,21 +1,4 @@
-<!--
-  <div class="dialog">
-  <h2 mat-dialog-title>Send email to XY</h2>
 
-  <mat-dialog-content class="mat-dialog-content">
-    <mat-form-field class="mat-form-field">
-      <input matInput placeholder="youremailaddress@example.com"/>
-      <input matInput placeholder="Subject"/>
-      <textarea class="text_area" placeholder="Write your message here" rows="10" cols="20"></textarea>
-    </mat-form-field>
-  </mat-dialog-content>
-
-  <mat-dialog-actions class="buttons">
-    <button mat-button (click)=cancel()>Cancel</button>
-    <button mat-raised-button (click)=send()> Send </button>
-  </mat-dialog-actions>
-
-</div>-->
 <form [formGroup]="mailForm" class="dialog" (ngSubmit)="onSubmit()">
   <h1 mat-dialog-title> Send email to XY </h1>
   <div mat-dialog-content>
@@ -40,27 +23,3 @@
   </div>
 </form>
 {{mailForm.value | json}}
-<!--
-<mat-form-field class="mat-form-field">
-  <input id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob" />
-  <mat-error *ngIf="name.invalid && (name.dirty || name.touched) || name.errors.minlength">
-    Name must be at least 4 characters long.
-  </mat-error>
-  <mat-error *ngIf="name.errors.required">
-    Name is <strong> required </strong> .
-  </mat-error>
-  <mat-error *ngIf="name.errors.forbiddenName">
-      Name cannot be Bob.
-  </mat-error>
-</mat-form-field>
-
-  <mat-form-field class="mat-form-field">
-  <input id="email"/>
-  <mat-error *ngIf="emailFormControl.hasError('email')">
-    Please enter a valid email address!
-  </mat-error>
-  <mat-error *ngIf="emailFormControl.hasError('required')">
-    Email is <strong> required </strong> .
-  </mat-error>
-</mat-form-field>
--->
